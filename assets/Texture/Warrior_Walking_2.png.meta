@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "1b2fdd98-6289-471a-8bc3-f57a4a75c92a",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "Warrior_Walking_2": {
+      "ver": "1.0.3",
+      "uuid": "8d11f03c-e0d1-43ac-9888-1b4254c7d2ac",
+      "rawTextureUuid": "1b2fdd98-6289-471a-8bc3-f57a4a75c92a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 2,
+      "trimY": 1,
+      "width": 12,
+      "height": 14,
+      "rawWidth": 16,
+      "rawHeight": 16,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

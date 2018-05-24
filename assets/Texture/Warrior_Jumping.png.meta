@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "a0e3f637-7aac-4b9c-b89d-6c8545fa0802",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "Warrior_Jumping": {
+      "ver": "1.0.3",
+      "uuid": "34da215f-3d9a-49a3-84a8-7e7856ad42ce",
+      "rawTextureUuid": "a0e3f637-7aac-4b9c-b89d-6c8545fa0802",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": 0.5,
+      "trimX": 3,
+      "trimY": 1,
+      "width": 11,
+      "height": 13,
+      "rawWidth": 16,
+      "rawHeight": 16,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
