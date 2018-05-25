@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Warrior",
+    "_name": "Chest",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -25,13 +25,10 @@
       },
       {
         "__id__": 4
-      },
-      {
-        "__id__": 5
       }
     ],
     "_prefab": {
-      "__id__": 6
+      "__id__": 5
     },
     "_id": "",
     "_opacity": 255,
@@ -50,8 +47,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 12,
-      "height": 14
+      "width": 16,
+      "height": 11
     },
     "_rotationX": 90,
     "_rotationY": 90,
@@ -59,8 +56,8 @@
     "_scaleY": 8,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -319,
-      "y": 301
+      "x": -331,
+      "y": -163
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -78,7 +75,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "be1e5e4b-20e5-40a8-8ae4-875e13a65405"
+      "__uuid__": "bb23c446-7d8f-44eb-a552-6785808c0a0e"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -111,12 +108,12 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 12,
-      "height": 14
+      "width": 16,
+      "height": 11
     }
   },
   {
-    "__type__": "9a47fEhy0FBrrdUTxkndG7Q",
+    "__type__": "099f4181E5NCaqYM9rQPL4D",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -125,32 +122,14 @@
     "_enabled": true
   },
   {
-    "__type__": "cc.Animation",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "_defaultClip": {
-      "__uuid__": "2a887c80-28da-417b-a4d1-365b85465f20"
-    },
-    "_clips": [
-      {
-        "__uuid__": "2a887c80-28da-417b-a4d1-365b85465f20"
-      }
-    ],
-    "playOnLoad": true
-  },
-  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d373926c-5c80-4223-926b-9a53bc42628a"
+      "__uuid__": "ab6840b8-e5aa-4792-9ffe-16fcaf928722"
     },
-    "fileId": "0fzH26Et9GLJU1QR1AKKSr",
+    "fileId": "50jFEHAS1Ma5CDzAQsMT0m",
     "sync": false
   }
 ]

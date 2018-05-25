@@ -1,0 +1,49 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "Warrior_Run",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.36666666666666664,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "be1e5e4b-20e5-40a8-8ae4-875e13a65405"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "d6858f8e-07a0-4637-b9cd-2b5949cd7943"
+            }
+          },
+          {
+            "frame": 0.13333333333333333,
+            "value": {
+              "__uuid__": "8d11f03c-e0d1-43ac-9888-1b4254c7d2ac"
+            }
+          },
+          {
+            "frame": 0.23333333333333334,
+            "value": {
+              "__uuid__": "cc6e0684-bb5b-4dc9-8582-dd523c21cf72"
+            }
+          },
+          {
+            "frame": 0.35,
+            "value": {
+              "__uuid__": "be1e5e4b-20e5-40a8-8ae4-875e13a65405"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
