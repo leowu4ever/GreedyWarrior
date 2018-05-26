@@ -4,12 +4,14 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        test: Spawner,
+        spawner: Spawner,
 
     },
 
      start () {
         cc.log("game manager starts");
-        this.test.createEnemy();
+        this.spawner.createChest();
+        this.spawner.createBat();
+
     },
 });
