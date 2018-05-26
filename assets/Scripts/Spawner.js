@@ -20,8 +20,6 @@ var Spawner = cc.Class({
         chest.setPosition (this.left.x, this.left.y);
         var moveAlongLeft = cc.moveTo (3, chest.x, 1100);
         chest.runAction (moveAlongLeft);
-
-        
     },
 
     createBat () {
@@ -63,9 +61,13 @@ var Spawner = cc.Class({
         bat.runAction (cc.sequence (moveAlongMid, cc.callFunc (callbackTest, this), cc.callFunc (callbackTest2, this)));
     },
 
-    move () {
+
+    createWave (numOfEnemy, numOfWave, enemyInterval, waveInterval) {
         
+        this.canvas.runAction (cc.sequence (cc.callFunc (this.createChest, this), cc.delayTime (enemyInterval)).repeat (numOfEnemy));
+        this.canvas.runAction (cc.sequence (cc.callFunc (this.createBat, this), cc.delayTime (enemyInterval)).repeat (numOfEnemy));
     }
+
 });
 
 module.exports = {Spawner};
