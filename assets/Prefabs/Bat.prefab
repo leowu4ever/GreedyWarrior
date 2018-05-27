@@ -57,8 +57,8 @@
     "_scaleY": 10,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": -221
+      "x": -159,
+      "y": 295
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -86,7 +86,7 @@
       "__id__": 4
     },
     "_id": "",
-    "_opacity": 0,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -177,7 +177,7 @@
       "__id__": 7
     },
     "_id": "",
-    "_opacity": 0,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,

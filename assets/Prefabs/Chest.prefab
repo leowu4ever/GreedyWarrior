@@ -56,11 +56,11 @@
     },
     "_rotationX": 90,
     "_rotationY": 90,
-    "_scaleX": 8,
-    "_scaleY": 8,
+    "_scaleX": 6,
+    "_scaleY": 6,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -331,
+      "x": -342,
       "y": -163
     },
     "_skewX": 0,
