@@ -2,6 +2,8 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        speed: 0,
+        life: 0,
 
     },
 
@@ -12,5 +14,7 @@ cc.Class({
     onCollisionEnter: function (other, self) {
         cc.log ("hitted by an enemy");
     }
+
+    
 
 });

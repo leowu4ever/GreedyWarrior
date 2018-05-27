@@ -5,6 +5,8 @@ cc.Class({
 
     properties: {
         spawner: Spawner,
+        scoreLabel: cc.Node,
+        _score: 0,
     },
 
     start () {

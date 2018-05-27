@@ -6,6 +6,7 @@ var Spawner = cc.Class({
     name: 'Spawner',
     properties: {
         chest: cc.Prefab,
+        chestSpawnWarning: cc.Node,
         left: cc.Node,
         canvas: cc.Node,
         bat: cc.Prefab,
@@ -75,7 +76,7 @@ var Spawner = cc.Class({
 
     createWaves () {
 
-        
+
 
     }
 
