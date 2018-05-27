@@ -786,7 +786,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 26
+        "__id__": 28
       }
     ],
     "_prefab": null,
@@ -906,7 +906,31 @@
     },
     "warrior": {
       "__id__": 9
-    }
+    },
+    "wave": [
+      {
+        "__id__": 26
+      },
+      {
+        "__id__": 27
+      }
+    ]
+  },
+  {
+    "enemy": {
+      "__uuid__": "ab6840b8-e5aa-4792-9ffe-16fcaf928722"
+    },
+    "numOfEnemy": 1,
+    "enemyInterval": 1,
+    "waveDelay": 1
+  },
+  {
+    "enemy": {
+      "__uuid__": "c8218636-33c6-4a97-a743-eec76b5b3947"
+    },
+    "numOfEnemy": 1,
+    "enemyInterval": 1,
+    "waveDelay": 1
   },
   {
     "__type__": "27eb7LW3VNPSo5MhbyLQh/j",

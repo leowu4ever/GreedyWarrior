@@ -5,15 +5,23 @@ cc.Class({
 
     properties: {
         spawner: Spawner,
+    },
+
+    start () {
+    //   this.createWave (this.createChest, 2,2); 
+    //   this.createWave (this.createBat, 2,2); 
 
     },
 
-     start () {
-        cc.log("game manager starts");
-        //this.spawner.createChest ();
-        //this.spawner.createBat ();
+    // createWave (createEnemyFunction, numOfEnemy, enemyInterval) {  
+    //     this.schedule (createEnemyFunction, enemyInterval, numOfEnemy - 1);      
+    // },
+    
+    // createChest () {
+    //     this.spawner.createChest ();  
+    // },
 
-        this.spawner.createWave (3,3,2,2);
-
-    },
+    // createBat () {
+    //     this.spawner.createBat ();
+    // }
 });

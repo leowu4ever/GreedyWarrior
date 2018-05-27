@@ -1,3 +1,7 @@
+const Wave = require('Wave').Wave;
+// need to require enemy script
+
+
 var Spawner = cc.Class({
     name: 'Spawner',
     properties: {
@@ -6,6 +10,7 @@ var Spawner = cc.Class({
         canvas: cc.Node,
         bat: cc.Prefab,
         warrior: cc.Node,
+        wave: [Wave],   // enemy,numOfEnemy,enemyInterval,waveDelay
     },
 
     ctor () {
@@ -61,11 +66,17 @@ var Spawner = cc.Class({
         bat.runAction (cc.sequence (moveAlongMid, cc.callFunc (callbackTest, this), cc.callFunc (callbackTest2, this)));
     },
 
-
     createWave (numOfEnemy, numOfWave, enemyInterval, waveInterval) {
         
         this.canvas.runAction (cc.sequence (cc.callFunc (this.createChest, this), cc.delayTime (enemyInterval)).repeat (numOfEnemy));
         this.canvas.runAction (cc.sequence (cc.callFunc (this.createBat, this), cc.delayTime (enemyInterval)).repeat (numOfEnemy));
+          
+    },
+
+    createWaves () {
+
+        
+
     }
 
 });
