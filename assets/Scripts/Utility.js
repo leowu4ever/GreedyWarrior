@@ -7,6 +7,7 @@ cc.Class({
         cc.director.setDisplayStats(false);
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
-
+        
+    
     },
 });
