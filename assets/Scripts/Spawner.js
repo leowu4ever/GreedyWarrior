@@ -12,12 +12,35 @@ var Spawner = cc.Class({
         bat: cc.Prefab,
         warrior: cc.Node,
         wave: [Wave],   // enemy,numOfEnemy,enemyInterval,waveDelay
+        leftSpawnPoint: cc.Node,
+        rightSpawnPoint: cc.Node,
+
     },
 
     ctor () {
         cc.log ("this is ctor??");
-
     },
+
+    
+    createChest2 () {
+        // create a chest
+        var chest = cc.instantiate (this.chest);        
+        chest.parent = this.canvas;
+        
+        var randomNum = Math.random ();
+        if (randomNum > 0.5) {
+            chest.setPosition (this.leftSpawnPoint.x, this.leftSpawnPoint.y);
+
+        } else {
+            chest.setPosition (this.rightSpawnPoint.x, this.rightSpawnPoint.y);
+            chest.setScale (5, -5);
+        }
+
+        var verticalDistance = cc.visibleRect.height;
+        var moveUpwards = cc.moveBy (1, 0, verticalDistance * 2); // use speed
+        chest.runAction (moveUpwards);
+    },
+
 
     createChest () {
         // create a chest
@@ -79,6 +102,8 @@ var Spawner = cc.Class({
 
 
     }
+
+    
 
 });
 

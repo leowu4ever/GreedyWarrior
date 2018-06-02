@@ -12,7 +12,8 @@ cc.Class({
     start () {
     //   this.createWave (this.createChest, 2,2); 
     //   this.createWave (this.createBat, 2,2); 
-
+        
+        this.spawner.createChest2 ();
     },
 
     // createWave (createEnemyFunction, numOfEnemy, enemyInterval) {  

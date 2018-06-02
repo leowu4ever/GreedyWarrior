@@ -8,7 +8,8 @@ cc.Class({
         _isOnLeft: true,
     },
 
-    onLoad () {   
+    onLoad () {
+        // to control warrior   
         this.node.on ("touchstart", this.jump, this);
 
     },
