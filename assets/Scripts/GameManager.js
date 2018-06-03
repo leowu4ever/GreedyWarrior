@@ -10,21 +10,18 @@ cc.Class({
     },
 
     start () {
-    //   this.createWave (this.createChest, 2,2); 
-    //   this.createWave (this.createBat, 2,2); 
-        
-        this.spawner.createChest2 ();
+
+        this.spawner.hidePointNodes ();
+        this.schedule (this.createChest, 2);
+
     },
 
     // createWave (createEnemyFunction, numOfEnemy, enemyInterval) {  
     //     this.schedule (createEnemyFunction, enemyInterval, numOfEnemy - 1);      
     // },
     
-    // createChest () {
-    //     this.spawner.createChest ();  
-    // },
+    createChest () {
+        this.spawner.createAChest ();  
+    },
 
-    // createBat () {
-    //     this.spawner.createBat ();
-    // }
 });

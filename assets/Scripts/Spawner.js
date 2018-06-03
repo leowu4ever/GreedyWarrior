@@ -6,38 +6,55 @@ var Spawner = cc.Class({
     name: 'Spawner',
     properties: {
         chest: cc.Prefab,
-        chestSpawnWarning: cc.Node,
-        left: cc.Node,
         canvas: cc.Node,
         bat: cc.Prefab,
         warrior: cc.Node,
         wave: [Wave],   // enemy,numOfEnemy,enemyInterval,waveDelay
         leftSpawnPoint: cc.Node,
         rightSpawnPoint: cc.Node,
+        leftWarning: cc.Node,
+        rightWarning: cc.Node,
 
     },
 
     
     ctor () {
-    
+        // fade out all anchor node
+        //this.hidePointNodes ();
+    },
+
+    hidePointNodes () {
+        this.leftSpawnPoint.opacity = 0;
+        this.rightSpawnPoint.opacity = 0;
+        this.leftWarning.opacity = 0;
+        this.rightWarning.opacity = 0;
     },
 
     createAChest () {
-        var chest = cc.instantiate (this.chest);        
+        var chest = cc.instantiate (this.chest);    // dont keep instantiate            
         chest.parent = this.canvas;
         
         var randomNum = Math.random ();
+
+        //flash warning sign
+        var flashWarning = cc.sequence (cc.fadeTo (0.2, 255), cc.fadeTo (0.1, 0));
         if (randomNum > 0.5) {
+            this.leftWarning.runAction (flashWarning);
             chest.setPosition (this.leftSpawnPoint.x, this.leftSpawnPoint.y);
 
         } else {
+            this.rightWarning.runAction (flashWarning);
             chest.setPosition (this.rightSpawnPoint.x, this.rightSpawnPoint.y);
             chest.setScale (5, -5);
         }
+        
         var speed = chest.getComponent ("Chest").enemyProperty.speed;
         var moveUpwards = cc.moveBy (1/speed, 0, -this.rightSpawnPoint.y * 2); 
+
         chest.runAction (moveUpwards);
     },
+
+
 
     createBat () {
         // create a bat, then fly upwards, 

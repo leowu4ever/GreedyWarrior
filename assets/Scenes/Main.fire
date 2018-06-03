@@ -529,7 +529,7 @@
     ],
     "_prefab": null,
     "_id": "53DgcjwV1PSaaQU0q1Kher",
-    "_opacity": 100,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -636,7 +636,7 @@
     ],
     "_prefab": null,
     "_id": "58y9tStG1LD7SCJKSgFg3B",
-    "_opacity": 100,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -1039,12 +1039,6 @@
     "chest": {
       "__uuid__": "7454a564-84be-47ce-97ee-feaf51b166de"
     },
-    "chestSpawnWarning": {
-      "__id__": 23
-    },
-    "left": {
-      "__id__": 15
-    },
     "canvas": {
       "__id__": 2
     },
@@ -1067,6 +1061,12 @@
     },
     "rightSpawnPoint": {
       "__id__": 18
+    },
+    "leftWarning": {
+      "__id__": 21
+    },
+    "rightWarning": {
+      "__id__": 23
     }
   },
   {
