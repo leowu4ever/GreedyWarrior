@@ -286,7 +286,7 @@
   },
   {
     "__type__": "Enemy",
-    "speed": 10,
+    "speed": 0.5,
     "health": 1
   },
   {

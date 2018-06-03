@@ -17,13 +17,12 @@ var Spawner = cc.Class({
 
     },
 
+    
     ctor () {
-        cc.log ("this is ctor??");
+    
     },
 
-    
-    createChest2 () {
-        // create a chest
+    createAChest () {
         var chest = cc.instantiate (this.chest);        
         chest.parent = this.canvas;
         
@@ -35,20 +34,9 @@ var Spawner = cc.Class({
             chest.setPosition (this.rightSpawnPoint.x, this.rightSpawnPoint.y);
             chest.setScale (5, -5);
         }
-
-        var verticalDistance = cc.visibleRect.height;
-        var moveUpwards = cc.moveBy (1, 0, verticalDistance * 2); // use speed
+        var speed = chest.getComponent ("Chest").enemyProperty.speed;
+        var moveUpwards = cc.moveBy (1/speed, 0, -this.rightSpawnPoint.y * 2); 
         chest.runAction (moveUpwards);
-    },
-
-
-    createChest () {
-        // create a chest
-        var chest = cc.instantiate (this.chest);        
-        chest.parent = this.canvas;
-        chest.setPosition (this.left.x, this.left.y);
-        var moveAlongLeft = cc.moveTo (3, chest.x, 1100);
-        chest.runAction (moveAlongLeft);
     },
 
     createBat () {
