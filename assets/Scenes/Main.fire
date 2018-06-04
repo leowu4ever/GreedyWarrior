@@ -1229,8 +1229,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 8.526512829121202e-14,
-      "y": 5.684341886080802e-14
+      "x": 0,
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1241,7 +1241,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Game Manger",
+    "_name": "Game Manager",
     "_objFlags": 0,
     "_parent": {
       "__id__": 33

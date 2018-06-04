@@ -16,6 +16,10 @@ cc.Class({
 
     },
 
+    update () {
+        //cc.log (this._score);
+    },
+
     // createWave (createEnemyFunction, numOfEnemy, enemyInterval) {  
     //     this.schedule (createEnemyFunction, enemyInterval, numOfEnemy - 1);      
     // },
@@ -24,5 +28,14 @@ cc.Class({
         this.spawner.createAChest ();  
         this.spawner.createABat (0);
     },
+
+    updateScoreUI () {
+        this._score++;
+        this.scoreLabel.getComponent (cc.Label).string = "Score " + this._score;
+    },
+
+    gameover () {
+
+    }
 
 });
