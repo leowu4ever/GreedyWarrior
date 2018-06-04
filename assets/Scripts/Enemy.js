@@ -10,10 +10,6 @@ var Enemy = cc.Class({
             default: 1,
             type: cc.Float,
         }
-
-        
-
-        
     },
     
     ctor () {

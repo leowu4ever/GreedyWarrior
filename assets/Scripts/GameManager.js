@@ -12,7 +12,7 @@ cc.Class({
     start () {
 
         this.spawner.hidePointNodes ();
-        this.schedule (this.createChest, 2);
+        this.schedule (this.createEnemy, 4);
 
     },
 
@@ -20,8 +20,9 @@ cc.Class({
     //     this.schedule (createEnemyFunction, enemyInterval, numOfEnemy - 1);      
     // },
     
-    createChest () {
+    createEnemy () {
         this.spawner.createAChest ();  
+        this.spawner.createABat (0);
     },
 
 });

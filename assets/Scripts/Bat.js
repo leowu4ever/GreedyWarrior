@@ -1,18 +1,19 @@
+const Enemy = require('Enemy').Enemy;
+
 cc.Class({
     extends: cc.Component,
 
     properties: {
-        speed: 0,
-        life: 0,
-
+        enemyProperty: Enemy,
+        weaponSpeed: 1,
     },
 
-
     start () {
+
     },
 
     onCollisionEnter: function (other, self) {
-        cc.log ("hitted by an enemy");
-    }  
+    }
+
 
 });

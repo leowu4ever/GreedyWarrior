@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Bat",
+    "_name": "Bat_1",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -19,17 +19,26 @@
       },
       {
         "__id__": 5
+      },
+      {
+        "__id__": 8
+      },
+      {
+        "__id__": 11
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 8
+        "__id__": 14
+      },
+      {
+        "__id__": 15
       }
     ],
     "_prefab": {
-      "__id__": 9
+      "__id__": 17
     },
     "_id": "",
     "_opacity": 255,
@@ -57,8 +66,8 @@
     "_scaleY": 10,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -159,
-      "y": 295
+      "x": 24.1,
+      "y": -215
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -69,7 +78,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Bat_Arrow_Warning",
+    "_name": "Bat Left Warning",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -86,7 +95,7 @@
       "__id__": 4
     },
     "_id": "",
-    "_opacity": 255,
+    "_opacity": 0,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -111,7 +120,7 @@
     "_scaleY": 0.5,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 5,
+      "x": -5,
       "y": -1
     },
     "_skewX": 0,
@@ -155,12 +164,12 @@
     "asset": {
       "__uuid__": "c8218636-33c6-4a97-a743-eec76b5b3947"
     },
-    "fileId": "b6OLSz6a5EtbYRjkz0/nG1",
+    "fileId": "dc9YyOx91M0b/h2VCUD8U4",
     "sync": false
   },
   {
     "__type__": "cc.Node",
-    "_name": "Bat_Arrow",
+    "_name": "Bat Right Warning",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -177,7 +186,7 @@
       "__id__": 7
     },
     "_id": "",
-    "_opacity": 255,
+    "_opacity": 0,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -193,17 +202,17 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 4,
-      "height": 4
+      "width": 5,
+      "height": 7
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 1,
-    "_scaleY": 1,
+    "_scaleX": 0.5,
+    "_scaleY": 0.5,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 6.5,
-      "y": 6.1
+      "x": 5,
+      "y": -1
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -218,6 +227,188 @@
     "_objFlags": 0,
     "node": {
       "__id__": 5
+    },
+    "_enabled": true,
+    "_spriteFrame": {
+      "__uuid__": "4d57a2b1-a0d4-4ddd-b4ae-805bee7805b2"
+    },
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_atlas": null
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "c8218636-33c6-4a97-a743-eec76b5b3947"
+    },
+    "fileId": "b6OLSz6a5EtbYRjkz0/nG1",
+    "sync": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Bat Left Weapon",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 9
+      }
+    ],
+    "_prefab": {
+      "__id__": 10
+    },
+    "_id": "",
+    "_opacity": 0,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 4,
+      "height": 4
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": -1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 3.6
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 8
+    },
+    "_enabled": true,
+    "_spriteFrame": {
+      "__uuid__": "c5070b20-4131-42d6-bd0b-a755789a9586"
+    },
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_atlas": null
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "c8218636-33c6-4a97-a743-eec76b5b3947"
+    },
+    "fileId": "5dF+XDkUpO0ZOkOI2fHNnx",
+    "sync": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Bat Right Weapon",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 12
+      }
+    ],
+    "_prefab": {
+      "__id__": 13
+    },
+    "_id": "",
+    "_opacity": 0,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 4,
+      "height": 4
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 3.6
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 11
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -274,6 +465,24 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": null
+  },
+  {
+    "__type__": "cf5bcrFuOpIn7mMKTUKpvUE",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "enemyProperty": {
+      "__id__": 16
+    },
+    "arrowSpeed": 1
+  },
+  {
+    "__type__": "Enemy",
+    "speed": 1,
+    "health": 1
   },
   {
     "__type__": "cc.PrefabInfo",

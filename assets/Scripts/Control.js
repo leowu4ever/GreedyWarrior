@@ -2,38 +2,53 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        moveSpeed: 0.0,
+        speed: 0.0,
         warrior: cc.Node,
-        warriorHorizontalPosition: 0.0,
+        warriorLeftPoint: cc.Node,
+        warriorRightPoint: cc.Node,
         _isOnLeft: true,
+        _isOnAir: false,
+        _speed: 0,
     },
 
     onLoad () {
         // to control warrior   
         this.node.on ("touchstart", this.jump, this);
+        this._speed = 1/this.speed;
 
     },
 
     jump () {
-        var speed = 1/this.moveSpeed;
-        var jumpToRight = cc.moveTo (speed, 319, this.warriorHorizontalPosition);
-        var rotateToRight = cc.scaleTo (speed, 8, -8);
-        var jumpToLeft = cc.moveTo (speed, -319, this.warriorHorizontalPosition);
-        var rotateToLeft = cc.scaleTo (speed, 8, 8);
+        // callback function when the movement is finished
+        // check if is on the air
+        cc.log (this._isOnAir);
+        if (!this._isOnAir) {
+            if (this._isOnLeft) {
+                this._isOnAir = true;
+                var jumpToRight = cc.moveTo (this._speed, this.warriorRightPoint.x, this.warriorRightPoint.y);
+                var rotateToRight = cc.scaleTo (this._speed, 8, -8);
+                var moveToRight = cc.spawn (jumpToRight, rotateToRight);
+                var enableMoveToLeft = function () {
 
-        // try spawn 
-        // make the node zoom while it moves upwards
-        // var spawn = cc.spawn(cc.moveBy(0.5, 0, 50), cc.scaleTo(0.5, 0.8, 1.4));
-        // node.runAction(spawn);
+                    this.isOnleft = false;
+                    this._isOnAir = false;
+                }
+                this.warrior.runAction (cc.sequence (moveToRight, cc.callFunc (enableMoveToLeft, this)));
+                this.warrior.runAction (jumpToRight);
+                this.warrior.runAction (rotateToRight);
 
-        if (this._isOnLeft) {
-            this.warrior.runAction (jumpToRight);
-            this.warrior.runAction (rotateToRight);
-            this._isOnLeft = false;
-        } else {
-            this.warrior.runAction (jumpToLeft);
-            this.warrior.runAction (rotateToLeft);
-            this._isOnLeft = true;
+                this._isOnLeft = false;
+            } else {
+                this._isOnAir = true;
+                var jumpToLeft = cc.moveTo (this._speed, this.warriorLeftPoint.x, this.warriorLeftPoint.y);
+                var rotateToLeft = cc.scaleTo (this._speed, 8, 8);
+                var moveToLeft = cc.spawn (jumpToLeft, rotateToLeft);
+                var enableMoveToRight = function () {
+                    this._isOnLeft = true;
+                    this._isOnAir = false;
+                };
+                this.warrior.runAction (cc.sequence (moveToLeft, cc.callFunc (enableMoveToRight, this)));
+            }
         } 
      }
 });

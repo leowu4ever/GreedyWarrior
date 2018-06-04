@@ -1,25 +1,25 @@
 const Wave = require('Wave').Wave;
 // need to require enemy script
 
-
 var Spawner = cc.Class({
     name: 'Spawner',
     properties: {
         chest: cc.Prefab,
         canvas: cc.Node,
-        bat: cc.Prefab,
+        bat: [cc.Prefab],
         warrior: cc.Node,
         wave: [Wave],   // enemy,numOfEnemy,enemyInterval,waveDelay
         leftSpawnPoint: cc.Node,
         rightSpawnPoint: cc.Node,
         leftWarning: cc.Node,
         rightWarning: cc.Node,
+        chestShowUpDelay: 0.3,
+        warriorLeftPoint: cc.Node,
+        warriorRightPoint: cc.Node,
 
     },
-
     
     ctor () {
-        // fade out all anchor node
         //this.hidePointNodes ();
     },
 
@@ -28,6 +28,8 @@ var Spawner = cc.Class({
         this.rightSpawnPoint.opacity = 0;
         this.leftWarning.opacity = 0;
         this.rightWarning.opacity = 0;
+        this.warriorLeftPoint.opacity = 0;
+        this.warriorRightPoint.opacity = 0;
     },
 
     createAChest () {
@@ -35,9 +37,7 @@ var Spawner = cc.Class({
         chest.parent = this.canvas;
         
         var randomNum = Math.random ();
-
-        //flash warning sign
-        var flashWarning = cc.sequence (cc.fadeTo (0.2, 255), cc.fadeTo (0.1, 0));
+        var flashWarning = cc.sequence (cc.fadeTo (0.3, 255), cc.fadeTo (0.1, 0));
         if (randomNum > 0.5) {
             this.leftWarning.runAction (flashWarning);
             chest.setPosition (this.leftSpawnPoint.x, this.leftSpawnPoint.y);
@@ -49,66 +49,69 @@ var Spawner = cc.Class({
         }
         
         var speed = chest.getComponent ("Chest").enemyProperty.speed;
-        var moveUpwards = cc.moveBy (1/speed, 0, -this.rightSpawnPoint.y * 2); 
-
+        var moveUpwards = cc.sequence (cc.delayTime (1), cc.moveBy (1/speed, 0, -this.rightSpawnPoint.y*2)); 
+        
         chest.runAction (moveUpwards);
     },
 
-
-
-    createBat () {
-        // create a bat, then fly upwards, 
-        // stay in the mid and immediately create a warning
-        // create arrow depending on warrior positions
-        // bat then explore
-        // do sequence
-
-        var bat = cc.instantiate (this.bat);
+    createABat (color) { // white 0, black 1
+        var bat = cc.instantiate (this.bat[0]);
         bat.parent = this.canvas;
-        bat.setPosition  (0, this.left.y);
+        bat.setPosition  (0, this.leftSpawnPoint.y);
 
-        var moveAlongMid = cc.moveTo (1, 0, -300);
+        var speed = 1/bat.getComponent ("Bat").enemyProperty.speed;
+        var weaponSpeed = bat.getComponent ("Bat").weaponSpeed;
+        var moveUpwards = cc.moveBy (speed, 0, cc.visibleRect.height/3);
 
-        var warning = bat.getChildByName ("Bat_Arrow_Warning");
-        var showWarning = cc.fadeTo (0.1, 255);
-       
-        // sequence
-        
-        var callbackTest = function () {
-            warning.runAction (showWarning);
-        }
+        var flashWarningCallback = function () {
+            // show warning according to play position
 
-        var callbackTest2 = function () {
-            var arrow = bat.getChildByName ("Bat_Arrow");
-            var showArrow = cc.fadeTo(0.1, 255); 
-            // get warrior position
-            // convert warrior position based on bat (parent)
             var warriorWorldPos = this.warrior.getParent ().convertToWorldSpaceAR (this.warrior.getPosition());
             var warriorNodePos = bat.convertToNodeSpaceAR (warriorWorldPos);
-            cc.log (warriorNodePos);    
-
-            var fireArrow = cc.moveTo (2, warriorNodePos.x, warriorNodePos.y);
             
-            var sequence = cc.sequence (showArrow, fireArrow);
-            arrow.runAction(sequence);
+            if (warriorNodePos.x < 0) {
+                var warning = bat.getChildByName ("Bat Left Warning");
+                var weapon = bat.getChildByName ("Bat Left Weapon");
+
+                var warriorLeftWorldPos = this.warrior.getParent ().convertToWorldSpaceAR (this.warriorLeftPoint.getPosition());
+                var warriorLeftPoint = bat.convertToNodeSpaceAR (warriorLeftWorldPos);
+                var fireWeapon = cc.moveTo (weaponSpeed, warriorLeftPoint.x, warriorLeftPoint.y);
+
+            } else {
+                var warning = bat.getChildByName ("Bat Right Warning");
+                var weapon = bat.getChildByName ("Bat Right Weapon");
+
+                var warriorRightWorldPos = this.warrior.getParent ().convertToWorldSpaceAR (this.warriorRightPoint.getPosition());
+                var warriorRightPoint = bat.convertToNodeSpaceAR (warriorRightWorldPos);
+
+                var fireWeapon = cc.moveTo (weaponSpeed, warriorRightPoint.x, warriorRightPoint.y);
+
+            }
+
+
+            var showAndFireWeapon = function () {
+                var hideBatAndWeapon = function () {
+                    cc.log ("hide");
+                    bat.runAction (cc.fadeTo(0.5, 0));
+                };
+
+
+                var showArrow = cc.fadeTo(0.1, 255); 
+                var sequence = cc.sequence (showArrow, fireWeapon, cc.callFunc (hideBatAndWeapon, this));
+                weapon.runAction(sequence);
+                             
+
+            };
+
+
+            var flashWarning = cc.sequence (cc.fadeTo (0.2, 255), cc.fadeTo (1, 0), cc.callFunc (showAndFireWeapon, this));
+            warning.runAction (flashWarning);
+
         }
-        bat.runAction (cc.sequence (moveAlongMid, cc.callFunc (callbackTest, this), cc.callFunc (callbackTest2, this)));
+
+
+        bat.runAction (cc.sequence (moveUpwards, cc.callFunc (flashWarningCallback, this)));
     },
-
-    createWave (numOfEnemy, numOfWave, enemyInterval, waveInterval) {
-        
-        this.canvas.runAction (cc.sequence (cc.callFunc (this.createChest, this), cc.delayTime (enemyInterval)).repeat (numOfEnemy));
-        this.canvas.runAction (cc.sequence (cc.callFunc (this.createBat, this), cc.delayTime (enemyInterval)).repeat (numOfEnemy));
-          
-    },
-
-    createWaves () {
-
-
-
-    }
-
-    
 
 });
 
