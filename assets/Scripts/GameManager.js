@@ -37,7 +37,7 @@ cc.Class({
 
     stopGame () {
         this.unschedule (this.createEnemy);
-        this._isStopped = true;
+        //this._isStopped = true;   // for testing
         cc.log ("stop");
     }
 
