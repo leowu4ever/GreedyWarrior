@@ -13,9 +13,14 @@ cc.Class({
     },
 
     onCollisionEnter: function (other, self) {
+        var gm = cc.find ("Utility/Game Manager").getComponent("GameManager");
+        if (other.tag == 1 && !gm._isStopped) {
+            gm.updateScoreUI();
 
-        if (other.tag == 1) {
-            cc.find ("Utility/Game Manager").getComponent("GameManager").updateScoreUI();
+        }
+
+        if (other.tag == 2) {
+            gm.stopGame();
 
         }
     

@@ -361,7 +361,7 @@
       "__id__": 6
     },
     "_enabled": true,
-    "tag": 0,
+    "tag": 1,
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -1305,7 +1305,8 @@
     "scoreLabel": {
       "__id__": 13
     },
-    "_score": 0
+    "_score": 0,
+    "_isStopped": false
   },
   {
     "__type__": "Spawner",

@@ -7,6 +7,7 @@ cc.Class({
         spawner: Spawner,
         scoreLabel: cc.Node,
         _score: 0,
+        _isStopped: false,
     },
 
     start () {
@@ -17,7 +18,7 @@ cc.Class({
     },
 
     update () {
-        //cc.log (this._score);
+        cc.log (this._isStopped);
     },
 
     // createWave (createEnemyFunction, numOfEnemy, enemyInterval) {  
@@ -34,8 +35,10 @@ cc.Class({
         this.scoreLabel.getComponent (cc.Label).string = "Score " + this._score;
     },
 
-    gameover () {
-
+    stopGame () {
+        this.unschedule (this.createEnemy);
+        this._isStopped = true;
+        cc.log ("stop");
     }
 
 });
