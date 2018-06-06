@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "abcbf747-1de5-487a-985b-f8c4fc1e6c47",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "Ghoest_Weapon2": {
+      "ver": "1.0.3",
+      "uuid": "4a2ecb90-165a-4cf2-9f51-a7f91f25ec58",
+      "rawTextureUuid": "abcbf747-1de5-487a-985b-f8c4fc1e6c47",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 3,
+      "trimX": 6,
+      "trimY": 1,
+      "width": 4,
+      "height": 28,
+      "rawWidth": 16,
+      "rawHeight": 36,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
