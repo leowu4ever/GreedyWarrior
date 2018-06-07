@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "e210c7a3-2647-4a9b-9bdb-fe961c45edd9",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "Scarecow1": {
+      "ver": "1.0.3",
+      "uuid": "ad1b9a97-78ec-40c5-92d3-c617371bfe65",
+      "rawTextureUuid": "e210c7a3-2647-4a9b-9bdb-fe961c45edd9",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 3,
+      "width": 16,
+      "height": 10,
+      "rawWidth": 16,
+      "rawHeight": 16,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
