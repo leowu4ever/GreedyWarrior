@@ -5,6 +5,8 @@ var Spawner = cc.Class({
     name: 'Spawner',
     properties: {
         chest: cc.Prefab,
+        ghost: cc.Prefab,
+        wizard: cc.Prefab,
         canvas: cc.Node,
         bat: [cc.Prefab],
         warrior: cc.Node,
@@ -63,7 +65,7 @@ var Spawner = cc.Class({
         var weaponSpeed = bat.getComponent ("Bat").weaponSpeed;
         var moveUpwards = cc.moveBy (speed, 0, cc.visibleRect.height/3);
 
-        var flashWarningCallback = function () {
+        var flashWarning = function () {
             // show warning according to play position
 
             var warriorWorldPos = this.warrior.getParent ().convertToWorldSpaceAR (this.warrior.getPosition());
@@ -88,30 +90,47 @@ var Spawner = cc.Class({
 
             }
 
-
             var showAndFireWeapon = function () {
                 var hideBatAndWeapon = function () {
                     cc.log ("hide");
                     bat.runAction (cc.fadeTo(0.5, 0));
                 };
 
-
                 var showArrow = cc.fadeTo(0.1, 255); 
                 var sequence = cc.sequence (showArrow, fireWeapon, cc.callFunc (hideBatAndWeapon, this));
                 weapon.runAction(sequence);
-                             
-
+                            
             };
-
-
             var flashWarning = cc.sequence (cc.fadeTo (0.2, 255), cc.fadeTo (1, 0), cc.callFunc (showAndFireWeapon, this));
             warning.runAction (flashWarning);
 
         }
 
-
-        bat.runAction (cc.sequence (moveUpwards, cc.callFunc (flashWarningCallback, this)));
+        bat.runAction (cc.sequence (moveUpwards, cc.callFunc (flashWarning, this)));
     },
+
+    createAGhost () {
+        // flash in the mid
+        // play animation
+        // fire weapon
+        // play flash again and ghost disappera
+        // call game manager to change direction and revert control after 5 sec
+        var ghost = cc.instantiate (this.ghost);
+        ghost.parent = this.canvas;
+
+        
+
+
+
+    },
+    
+
+    createAWizard () {
+        // spawn two wizards simultaneously
+        // fire weapons 
+        // leave
+        
+    }
 
 });
 
