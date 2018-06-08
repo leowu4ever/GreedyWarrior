@@ -12,7 +12,11 @@ cc.Class({
     },
 
     onLoad () {
-        // to control warrior   
+        // to control warrior 
+        
+        
+        // change to wipe
+        
         this.node.on ("touchstart", this.jump, this);
         this._speed = 1/this.speed;
 
@@ -21,7 +25,7 @@ cc.Class({
     jump () {
         // callback function when the movement is finished
         // check if is on the air
-        if (!cc.find ("Utility/Game Manager").getComponent("GameManager")._isStopped) {
+        if (!cc.find ("Utility/Game Manager").getComponent("GameManager")._isStopped) { // change to return method
             if (!this._isOnAir) {
                 if (this._isOnLeft) {
                     this._isOnAir = true;
@@ -51,6 +55,12 @@ cc.Class({
                 }
             }
         } 
+    },
+
+
+    invertControl () {
+
+
     }
 });
 

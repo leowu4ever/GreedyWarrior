@@ -110,16 +110,35 @@ var Spawner = cc.Class({
     },
 
     createAGhost () {
-        // flash in the mid
-        // play animation
-        // fire weapon
-        // play flash again and ghost disappera
-        // call game manager to change direction and revert control after 5 sec
-        var ghost = cc.instantiate (this.ghost);
-        ghost.parent = this.canvas;
+        // // flash in the mid
+        // // play animation
+        // // fire weapon
+        // // play flash again and ghost disappera
+        // // call game manager to change direction and revert control after 5 sec
+        // var ghostGroup = cc.instantiate (this.ghost);
+        // ghostGroup.parent = this.canvas;
 
+        // ghostGroup.setPosition (0,0);   // need related pos
+
+        // // hide everything
+        // var ghost = ghostGroup.getChildByName ("Ghost");
+        // var ghostSpawn = ghostGroup.getChildByName ("Ghost Spawn");
+        // var ghostWeapons = ghostGroup.getChildByName ("Ghost Weapons");
+
+        // ghost.opacity = 0;
+        // ghostSpawn.playAnimation ();
+        // // when finish
+        // ghost.runAction (cc.fadeTo (1, 255));
+        // ghost.playAnimation ();
+
+        // ghostWeapons.runAction (cc.fadeTo (1, 255));
+
+        // //cc.find ("Utility/Game Manager").getComponent("GameManager").invertControl();
         
-
+        // // hide everything
+        // ghostGroup.runAction (cc.fadeTo (1, 0));
+        // // revert control
+        
 
 
     },
@@ -129,6 +148,8 @@ var Spawner = cc.Class({
         // spawn two wizards simultaneously
         // fire weapons 
         // leave
+
+
         
     }
 
