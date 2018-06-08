@@ -17,7 +17,7 @@
         "__id__": 2
       },
       {
-        "__id__": 39
+        "__id__": 41
       }
     ],
     "_tag": -1,
@@ -93,16 +93,19 @@
       },
       {
         "__id__": 35
+      },
+      {
+        "__id__": 37
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 37
+        "__id__": 39
       },
       {
-        "__id__": 38
+        "__id__": 40
       }
     ],
     "_prefab": null,
@@ -1305,7 +1308,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 569
+      "y": 576
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1321,6 +1324,39 @@
       "__uuid__": "00ca5789-3592-4d63-a1cd-4c389e5af450"
     },
     "fileId": "0a7FA+acpMbp3hkaFyUdcf",
+    "sync": true
+  },
+  {
+    "__type__": "cc.Node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 2
+    },
+    "_id": "e5CXJXaslAzrL6qVDB3n7x",
+    "_prefab": {
+      "__id__": 38
+    },
+    "_name": "Wizard",
+    "_active": true,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": -320,
+      "y": -564
+    },
+    "_rotationX": 90,
+    "_rotationY": 90,
+    "_localZOrder": 0,
+    "_globalZOrder": 0
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 37
+    },
+    "asset": {
+      "__uuid__": "9c02bafe-c801-4880-b9fe-18d6d8e13c66"
+    },
+    "fileId": "c3GHHzQBVJuJ26bIrd5axm",
     "sync": true
   },
   {
@@ -1370,14 +1406,14 @@
     },
     "_children": [
       {
-        "__id__": 40
+        "__id__": 42
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 45
+        "__id__": 47
       }
     ],
     "_prefab": null,
@@ -1422,14 +1458,14 @@
     "_name": "Game Manager",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 39
+      "__id__": 41
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 41
+        "__id__": 43
       }
     ],
     "_prefab": null,
@@ -1474,11 +1510,11 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 40
+      "__id__": 42
     },
     "_enabled": true,
     "spawner": {
-      "__id__": 42
+      "__id__": 44
     },
     "scoreLabel": {
       "__id__": 16
@@ -1511,10 +1547,10 @@
     },
     "wave": [
       {
-        "__id__": 43
+        "__id__": 45
       },
       {
-        "__id__": 44
+        "__id__": 46
       }
     ],
     "leftSpawnPoint": {
@@ -1558,7 +1594,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 39
+      "__id__": 41
     },
     "_enabled": true
   }
