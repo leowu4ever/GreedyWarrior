@@ -9,6 +9,7 @@ cc.Class({
         _isOnLeft: true,
         _isOnAir: false,
         _speed: 0,
+        _isInverted: false,
     },
 
     onLoad () {
@@ -20,7 +21,26 @@ cc.Class({
         this.node.on ("touchstart", this.jump, this);
         this._speed = 1/this.speed;
 
+        this.node.on ("touchmove", this.test, this);
+
     },
+    
+    test (event) {
+        cc.log ("move");
+        //event.getTouches().length()
+        var startTouch = event.getTouches ()[0].getStartLocation ();
+        cc.log ("start " + startTouch.x + ", " + startTouch.y);
+        var curTouch = event.getTouches ()[0].getLocation ();
+        cc.log ("current " +  curTouch.x + ", " + curTouch.y);
+        // get start position
+        // current one exceed the threshold
+
+        // difference in x more than 10-20% & y less than 30% of x difference
+        // want rough horizontal swipe 
+        // prevent vertical swipe
+
+    },
+
 
     jump () {
         // callback function when the movement is finished
@@ -59,6 +79,17 @@ cc.Class({
 
 
     invertControl () {
+
+
+    },
+
+
+    moveToLeft () {
+
+    },
+
+    moveToRight (){
+
 
 
     }

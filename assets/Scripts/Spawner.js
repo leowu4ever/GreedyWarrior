@@ -56,6 +56,7 @@ var Spawner = cc.Class({
         chest.runAction (moveUpwards);
     },
 
+    // clean up code using animation
     createABat (color) { // white 0, black 1
         var bat = cc.instantiate (this.bat[0]);
         bat.parent = this.canvas;

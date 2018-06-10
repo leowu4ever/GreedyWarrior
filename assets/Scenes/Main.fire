@@ -1395,7 +1395,8 @@
     },
     "_isOnLeft": true,
     "_isOnAir": false,
-    "_speed": 0
+    "_speed": 0,
+    "_isInverted": false
   },
   {
     "__type__": "cc.Node",

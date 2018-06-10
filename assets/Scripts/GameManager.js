@@ -12,6 +12,8 @@ cc.Class({
 
     start () {
 
+        // spawn algorithm
+        
         this.spawner.hidePointNodes ();
         this.spawner.createAGhost ();
         this.spawner.createAWizard ();
@@ -42,5 +44,7 @@ cc.Class({
         //this._isStopped = true;   // for testing
         cc.log ("stop");
     }
+
+
 
 });
