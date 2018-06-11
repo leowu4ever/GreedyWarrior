@@ -4,7 +4,8 @@ cc.Class({
     properties: {
         speed: 0,
         life: 0,
-
+        normalSpriteFrame: cc.SpriteFrame,
+        invertedSpriteFrame: cc.SpriteFrame,
     },
 
 

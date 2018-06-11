@@ -16,8 +16,8 @@ cc.Class({
 
     onLoad () {
         this._speed = 1/this.speed;
-        this.node.on ("touchstart", this.move, this);
-        //this.node.on ("touchmove", this., this);
+        this.node.on ("touchmove", this.move, this);
+        //this.node.on ("touchstart", this., this);
 
     },
     

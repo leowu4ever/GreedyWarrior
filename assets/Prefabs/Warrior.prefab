@@ -124,7 +124,13 @@
     },
     "_enabled": true,
     "speed": 0,
-    "life": 0
+    "life": 0,
+    "normalSpriteFrame": {
+      "__uuid__": "be1e5e4b-20e5-40a8-8ae4-875e13a65405"
+    },
+    "invertedSpriteFrame": {
+      "__uuid__": "ad9b9b61-9796-4446-99db-6ca2e8119d97"
+    }
   },
   {
     "__type__": "cc.Animation",

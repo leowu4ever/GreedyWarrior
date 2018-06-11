@@ -5,11 +5,15 @@ cc.Class({
 
     properties: {
         enemyProperty: Enemy,
-
+        invertTime: 5,
     },
 
 
     start () {
+
     },
 
+    invertControl () {
+        
+    }
 });

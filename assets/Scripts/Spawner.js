@@ -18,7 +18,6 @@ var Spawner = cc.Class({
         chestShowUpDelay: 0.3,
         warriorLeftPoint: cc.Node,
         warriorRightPoint: cc.Node,
-
     },
     
     ctor () {
@@ -68,7 +67,6 @@ var Spawner = cc.Class({
 
         var flashWarning = function () {
             // show warning according to play position
-
             var warriorWorldPos = this.warrior.getParent ().convertToWorldSpaceAR (this.warrior.getPosition());
             var warriorNodePos = bat.convertToNodeSpaceAR (warriorWorldPos);
             
@@ -111,47 +109,31 @@ var Spawner = cc.Class({
     },
 
     createAGhost () {
-        // // flash in the mid
-        // // play animation
-        // // fire weapon
-        // // play flash again and ghost disappera
-        // // call game manager to change direction and revert control after 5 sec
-        // var ghostGroup = cc.instantiate (this.ghost);
-        // ghostGroup.parent = this.canvas;
 
-        // ghostGroup.setPosition (0,0);   // need related pos
+        var ghostGroup = cc.instantiate (this.ghost);
+        ghostGroup.parent = this.canvas;
 
-        // // hide everything
-        // var ghost = ghostGroup.getChildByName ("Ghost");
-        // var ghostSpawn = ghostGroup.getChildByName ("Ghost Spawn");
-        // var ghostWeapons = ghostGroup.getChildByName ("Ghost Weapons");
+        ghostGroup.setPosition (0,0);   // need related pos
+        var invertTime = ghostGroup.getComponent ("Ghost").invertTime;
+        var control = this.canvas.getComponent("Control");
+        var that = this;
+        ghostGroup.getComponent ("Ghost").scheduleOnce (function () {
+            control.invertControl ();
+            that.warrior.getComponent (cc.Sprite).spriteFrame = that.warrior.getComponent ("Warrior").invertedSpriteFrame;
 
-        // ghost.opacity = 0;
-        // ghostSpawn.playAnimation ();
-        // // when finish
-        // ghost.runAction (cc.fadeTo (1, 255));
-        // ghost.playAnimation ();
+        }, 2);
 
-        // ghostWeapons.runAction (cc.fadeTo (1, 255));
-
-        // //cc.find ("Utility/Game Manager").getComponent("GameManager").invertControl();
+        var revertControl = function () {
+            control.revertControl ();
+            this.warrior.getComponent (cc.Sprite).spriteFrame = this.warrior.getComponent ("Warrior").normalSpriteFrame;
+        };
         
-        // // hide everything
-        // ghostGroup.runAction (cc.fadeTo (1, 0));
-        // // revert control
-        
-
-
+        ghostGroup.runAction (cc.sequence (cc.delayTime (invertTime), cc.fadeTo (0.5, 0), cc.callFunc (revertControl, this)));
     },
     
 
     createAWizard () {
-        // spawn two wizards simultaneously
-        // fire weapons 
-        // leave
 
-
-        
     }
 
 });
