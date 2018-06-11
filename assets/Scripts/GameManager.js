@@ -13,7 +13,6 @@ cc.Class({
     start () {
 
         // spawn algorithm
-        
         this.spawner.hidePointNodes ();
         this.spawner.createAGhost ();
         this.spawner.createAWizard ();
@@ -22,7 +21,7 @@ cc.Class({
     },
 
     update () {
-        cc.log (this._isStopped);
+        
     },
 
     // createWave (createEnemyFunction, numOfEnemy, enemyInterval) {  
@@ -36,15 +35,18 @@ cc.Class({
 
     updateScoreUI () {
         this._score++;
-        this.scoreLabel.getComponent (cc.Label).string = "Score " + this._score;
+        this.scoreLabel.getComponent (cc.Label).string = this._score;
     },
 
     stopGame () {
         this.unschedule (this.createEnemy);
         //this._isStopped = true;   // for testing
         cc.log ("stop");
+    },
+
+
+    getGameState () {
+        return this._isStopped;
     }
-
-
 
 });
