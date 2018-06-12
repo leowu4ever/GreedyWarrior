@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "d5daaab9-52d0-4ccf-a903-f3d16536f61a",
+  "uuid": "0b708341-0c13-4447-a805-1a10ef897cfd",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "Gold": {
+    "DefenseBar": {
       "ver": "1.0.3",
-      "uuid": "d13a8cf0-8a27-498b-9ff6-29c7809e0e06",
-      "rawTextureUuid": "d5daaab9-52d0-4ccf-a903-f3d16536f61a",
+      "uuid": "0179b8c1-0da5-4863-8b3b-61deb9a33c88",
+      "rawTextureUuid": "0b708341-0c13-4447-a805-1a10ef897cfd",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -16,10 +16,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 26,
-      "height": 16,
-      "rawWidth": 26,
-      "rawHeight": 16,
+      "width": 29,
+      "height": 8,
+      "rawWidth": 29,
+      "rawHeight": 8,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

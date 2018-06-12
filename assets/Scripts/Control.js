@@ -11,17 +11,50 @@ cc.Class({
         _speed: 0,
         _isInverted: false,
         swipeThreshold: 100,
+        _touchCount: 0,
+        _touchNumOfTimesThreshold: 3,
+        _touchGapThreshold: 2000, //in mili second
+        _timeOfLastTouch: 0,
         
     },
 
     onLoad () {
         this._speed = 1/this.speed;
         this.node.on ("touchmove", this.move, this);
-        //this.node.on ("touchstart", this., this);
+        this.node.on ("touchstart", this.defend, this);
 
+    },
+
+    defend () {
+        // also check region
+        var currentTime = Date.now ();
+
+        if (this._touchCount == 0 && this._timeOfLastTouch == 0) {
+            this._touchCount++;
+            this._timeOfLastTouch = currentTime;
+        } else {
+            var touchGap = currentTime - this._timeOfLastTouch;
+            cc.log (touchGap + " " + this._touchGapThreshold);
+            if (touchGap < this._touchGapThreshold) {
+                cc.log ("within gap");
+                this._touchCount++;
+                this._timeOfLastTouch = currentTime;
+            } else {
+                cc.log ("without gap");
+                this._touchCount = 0;
+                this._timeOfLastTouch = 0;
+            }
+        }
+
+        if (this._touchCount > this._touchNumOfTimesThreshold) {
+            this._touchCount = 0;
+
+        }
+        cc.log (this._touchCount);
     },
     
     move (event) {
+        //cc.log ("move");
         var gm = cc.find ("Utility/Game Manager").getComponent("GameManager");
         var startTouch = event.getTouches ()[0].getStartLocation ();
         var curTouch = event.getTouches ()[0].getLocation ();

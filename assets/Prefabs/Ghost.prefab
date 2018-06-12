@@ -66,8 +66,8 @@
     "_scaleY": 8,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 576
+      "x": 14,
+      "y": -91
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -340,14 +340,14 @@
       "width": 0,
       "height": 0
     },
-    "_rotationX": 45,
-    "_rotationY": 45,
+    "_rotationX": 0,
+    "_rotationY": 0,
     "_scaleX": 1,
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -21,
-      "y": -19
+      "x": 0,
+      "y": 21
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -397,13 +397,13 @@
       "width": 4,
       "height": 28
     },
-    "_rotationX": 0,
-    "_rotationY": 0,
+    "_rotationX": -45,
+    "_rotationY": -45,
     "_scaleX": 1,
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": -20,
       "y": 0
     },
     "_skewX": 0,
@@ -470,7 +470,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Ghost Right Weapon",
+    "_name": "Ghost Mid Weapon",
     "_objFlags": 0,
     "_parent": {
       "__id__": 10
@@ -509,14 +509,14 @@
       "width": 4,
       "height": 28
     },
-    "_rotationX": -90,
-    "_rotationY": -90,
+    "_rotationX": 0,
+    "_rotationY": 0,
     "_scaleX": 1,
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 29.6984848,
-      "y": 29.6984848
+      "x": 0,
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -577,12 +577,12 @@
     "asset": {
       "__uuid__": "00ca5789-3592-4d63-a1cd-4c389e5af450"
     },
-    "fileId": "6b9Hl397VHzL/rT0BzgwZ7",
+    "fileId": "868X3BpshGTZBNVpfH7xip",
     "sync": false
   },
   {
     "__type__": "cc.Node",
-    "_name": "Ghost Mid Weapon",
+    "_name": "Ghost Right Weapon",
     "_objFlags": 0,
     "_parent": {
       "__id__": 10
@@ -621,14 +621,14 @@
       "width": 4,
       "height": 28
     },
-    "_rotationX": -45,
-    "_rotationY": -45,
+    "_rotationX": 45,
+    "_rotationY": 45,
     "_scaleX": 1,
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 14.8492424,
-      "y": 14.8492424
+      "x": 20,
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -689,7 +689,7 @@
     "asset": {
       "__uuid__": "00ca5789-3592-4d63-a1cd-4c389e5af450"
     },
-    "fileId": "868X3BpshGTZBNVpfH7xip",
+    "fileId": "6b9Hl397VHzL/rT0BzgwZ7",
     "sync": false
   },
   {
