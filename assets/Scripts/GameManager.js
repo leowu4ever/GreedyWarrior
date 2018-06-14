@@ -8,6 +8,7 @@ cc.Class({
         scoreLabel: cc.Node,
         _score: 0,
         _isStopped: false,
+        _isDefending: false,
     },
 
     start () {

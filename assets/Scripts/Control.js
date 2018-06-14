@@ -10,11 +10,13 @@ cc.Class({
         _isOnAir: false,
         _speed: 0,
         _isInverted: false,
-        swipeThreshold: 100,
+        _swipeThreshold: 100, //how much finger needs to move to trigger swiping
         _touchCount: 0,
-        _touchNumOfTimesThreshold: 3,
-        _touchGapThreshold: 2000, //in mili second
-        _timeOfLastTouch: 0,
+        _touchTimesThreshold: 3,
+        _touchGapThreshold: 1000, //in mili second
+        _lastTouchTime: 0,
+        _lastTouchPos: cc.v2 (0, 0),
+        _touchPosAreaThreshold: 30,
         
     },
 
@@ -22,35 +24,63 @@ cc.Class({
         this._speed = 1/this.speed;
         this.node.on ("touchmove", this.move, this);
         this.node.on ("touchstart", this.defend, this);
-
+  
     },
 
-    defend () {
+    defend (event) {
         // also check region
-        var currentTime = Date.now ();
-
-        if (this._touchCount == 0 && this._timeOfLastTouch == 0) {
-            this._touchCount++;
-            this._timeOfLastTouch = currentTime;
-        } else {
-            var touchGap = currentTime - this._timeOfLastTouch;
-            cc.log (touchGap + " " + this._touchGapThreshold);
-            if (touchGap < this._touchGapThreshold) {
-                cc.log ("within gap");
+        // check if it is on shield 
+        // GM  
+        console.clear ();
+        var curTouchPos = event.getTouches ()[0].getLocation ();
+        var curTouchTime = Date.now ();
+        
+        if (this.compareTwoPos (curTouchPos, this._lastTouchPos) || (this._lastTouchPos.x == 0 && this._lastTouchPos.y == 0)) {
+            if (this._touchCount == 0 && this._lastTouchTime == 0) {
                 this._touchCount++;
-                this._timeOfLastTouch = currentTime;
+                this._lastTouchTime = curTouchTime;
+                this._lastTouchPos = curTouchPos;
+                cc.log ("first touch");
+                cc.log (this._touchCount);
+    
             } else {
-                cc.log ("without gap");
+                var touchGap = curTouchTime - this._lastTouchTime;
+                cc.log (touchGap + " " + this._touchGapThreshold);
+                if (touchGap < this._touchGapThreshold) {
+                    this._touchCount++;
+                    this._lastTouchTime = curTouchTime;
+                    this._lastTouchPos = curTouchPos;
+                    cc.log ("next touch within gap");
+                    cc.log (this._touchCount);
+    
+                } else {
+                    this._touchCount = 0;
+                    this._lastTouchTime = 0;
+                    this._lastTouchPos = cc.v2 (0, 0);
+    
+                    cc.log ("next touch without gap");
+                    cc.log (this._touchCount);
+                }
+            }
+    
+            if (this._touchCount == this._touchTimesThreshold) {
                 this._touchCount = 0;
-                this._timeOfLastTouch = 0;
+                this._lastTouchPos = cc.v2 (0, 0);
+                cc.log ("hit the maximum touch");
             }
         }
+    },
 
-        if (this._touchCount > this._touchNumOfTimesThreshold) {
-            this._touchCount = 0;
-
+    compareTwoPos (curTouchPos, lastTouchPos) {
+        if (curTouchPos.x < lastTouchPos.x + this._touchPosAreaThreshold && curTouchPos.x > lastTouchPos.x - this._touchPosAreaThreshold) {
+            if (curTouchPos.y < lastTouchPos.y + this._touchPosAreaThreshold && curTouchPos.y > lastTouchPos.y - this._touchPosAreaThreshold) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
-        cc.log (this._touchCount);
     },
     
     move (event) {
@@ -65,35 +95,35 @@ cc.Class({
             if (!this._isOnAir) {
                 if (this._isOnLeft) {
                     if (!this._isInverted) {    // not inverted
-                        if (xDif > this.swipeThreshold) {
+                        if (xDif > this._swipeThreshold) {
                             // left & swiping right
                             this.moveToRight ();
-                        } else if (xDif < -this.swipeThreshold) {
+                        } else if (xDif < -this._swipeThreshold) {
                             // left & swiping left
                             //this.moveToLeft ();
                         }
                     } else {    // inverted
-                        if (xDif > this.swipeThreshold) {
+                        if (xDif > this._swipeThreshold) {
                             // left & swiping right
                             //this.moveToLeft ();
                          
-                        } else if (xDif < -this.swipeThreshold) {
+                        } else if (xDif < -this._swipeThreshold) {
                             this.moveToRight ();
                         }
                     }    
                 } else {
                     if (!this._isInverted) {
-                        if (xDif > this.swipeThreshold) {
+                        if (xDif > this._swipeThreshold) {
                             //this.moveToLeft ();
                          
-                        } else if (xDif < -this.swipeThreshold) {
+                        } else if (xDif < -this._swipeThreshold) {
                             this.moveToLeft ();
                         }
                     } else {
-                        if (xDif > this.swipeThreshold) {
+                        if (xDif > this._swipeThreshold) {
                             this.moveToLeft ();
                          
-                        } else if (xDif < -this.swipeThreshold) {
+                        } else if (xDif < -this._swipeThreshold) {
                             //this.moveToLeft ();
                         }
                     }    
