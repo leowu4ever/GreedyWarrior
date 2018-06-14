@@ -28,6 +28,7 @@ cc.Class({
         this.node.on ("touchstart", this.defend, this);
         this.node.on ("touchend", this.touchEnd, this);
     },
+    
     touchStart () {
         this._isTouchFinished = false;
     },

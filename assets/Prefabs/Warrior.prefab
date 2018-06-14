@@ -60,7 +60,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -319,
-      "y": 301
+      "y": 300
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -130,7 +130,8 @@
     },
     "invertedSpriteFrame": {
       "__uuid__": "ad9b9b61-9796-4446-99db-6ca2e8119d97"
-    }
+    },
+    "_isImmortal": false
   },
   {
     "__type__": "cc.Animation",

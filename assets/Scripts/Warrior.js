@@ -6,6 +6,7 @@ cc.Class({
         life: 0,
         normalSpriteFrame: cc.SpriteFrame,
         invertedSpriteFrame: cc.SpriteFrame,
+        _isImmortal: false,
     },
 
 
@@ -14,6 +15,19 @@ cc.Class({
 
     onCollisionEnter: function (other, self) {
         cc.log ("hitted by an enemy");
-    }  
+    },
+
+    // change warrior sprite here 
+    // change gm script TODO
+
+
+    // show shield 
+    showShield () {
+
+    },
+
+    showMad () {
+
+    }
 
 });

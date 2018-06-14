@@ -119,13 +119,13 @@ var Spawner = cc.Class({
         var that = this;
         ghostGroup.getComponent ("Ghost").scheduleOnce (function () {
             control.invertControl ();
-            that.warrior.getComponent (cc.Sprite).spriteFrame = that.warrior.getComponent ("Warrior").invertedSpriteFrame;
+            that.warrior.getComponent (cc.Sprite).spriteFrame = that.warrior.getComponent ("Warrior").invertedSpriteFrame;  // call warrior method  TODO
 
         }, 2);
 
         var revertControl = function () {
             control.revertControl ();
-            this.warrior.getComponent (cc.Sprite).spriteFrame = this.warrior.getComponent ("Warrior").normalSpriteFrame;
+            this.warrior.getComponent (cc.Sprite).spriteFrame = this.warrior.getComponent ("Warrior").normalSpriteFrame;    // call warrior method  TODO
         };
         
         ghostGroup.runAction (cc.sequence (cc.delayTime (invertTime), cc.fadeTo (0.5, 0), cc.callFunc (revertControl, this)));
