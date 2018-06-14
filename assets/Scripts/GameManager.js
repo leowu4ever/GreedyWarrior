@@ -15,9 +15,9 @@ cc.Class({
 
         // spawn algorithm
         this.spawner.hidePointNodes ();
-        // this.spawner.createAGhost ();
-        // this.spawner.createAWizard ();
-        // this.schedule (this.createEnemy, 3);
+        this.spawner.createAGhost ();
+        this.spawner.createAWizard ();
+        this.schedule (this.createEnemy, 3);
 
     },
 
@@ -40,7 +40,7 @@ cc.Class({
     },
 
     stopGame () {
-        this.unschedule (this.createEnemy);
+        //this.unschedule (this.createEnemy);
         //this._isStopped = true;   // for testing
         cc.log ("stop");
     },

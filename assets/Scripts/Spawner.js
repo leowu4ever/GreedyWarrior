@@ -41,11 +41,11 @@ var Spawner = cc.Class({
         var flashWarning = cc.sequence (cc.fadeTo (0.3, 255), cc.fadeTo (0.1, 0));
         if (randomNum > 0.5) {
             this.leftWarning.runAction (flashWarning);
-            chest.setPosition (this.leftSpawnPoint.x, this.leftSpawnPoint.y);
+            chest.setPosition (cc.v2 (this.leftSpawnPoint.x, this.leftSpawnPoint.y));
 
         } else {
             this.rightWarning.runAction (flashWarning);
-            chest.setPosition (this.rightSpawnPoint.x, this.rightSpawnPoint.y);
+            chest.setPosition (cc.v2 (this.rightSpawnPoint.x, this.rightSpawnPoint.y));
             chest.setScale (5, -5);
         }
         
@@ -59,7 +59,7 @@ var Spawner = cc.Class({
     createABat (color) { // white 0, black 1
         var bat = cc.instantiate (this.bat[0]);
         bat.parent = this.canvas;
-        bat.setPosition  (0, this.leftSpawnPoint.y);
+        bat.setPosition (cc.v2(0, this.leftSpawnPoint.y));
 
         var speed = 1/bat.getComponent ("Bat").enemyProperty.speed;
         var weaponSpeed = bat.getComponent ("Bat").weaponSpeed;
@@ -113,14 +113,13 @@ var Spawner = cc.Class({
         var ghostGroup = cc.instantiate (this.ghost);
         ghostGroup.parent = this.canvas;
 
-        ghostGroup.setPosition (0,0);   // need related pos
+        ghostGroup.setPosition (cc.v2 (0, 0));   // need related pos
         var invertTime = ghostGroup.getComponent ("Ghost").invertTime;
         var control = this.canvas.getComponent("Control");
         var that = this;
         ghostGroup.getComponent ("Ghost").scheduleOnce (function () {
             control.invertControl ();
             that.warrior.getComponent (cc.Sprite).spriteFrame = that.warrior.getComponent ("Warrior").invertedSpriteFrame;  // call warrior method  TODO
-
         }, 2);
 
         var revertControl = function () {
@@ -133,7 +132,9 @@ var Spawner = cc.Class({
     
 
     createAWizard () {
-
+        var wizardGroup = cc.instantiate (this.wizard);
+        wizardGroup.parent = this.canvas;
+        wizardGroup.setPosition (this.leftWarning); 
     }
 
 });
