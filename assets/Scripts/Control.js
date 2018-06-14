@@ -17,24 +17,40 @@ cc.Class({
         _lastTouchTime: 0,
         _lastTouchPos: cc.v2 (0, 0),
         _touchPosAreaThreshold: 30,
+        _isTouchFinished: true,
         
     },
 
     onLoad () {
         this._speed = 1/this.speed;
         this.node.on ("touchmove", this.move, this);
+        this.node.on ("touchstart", this.touchStart, this);
         this.node.on ("touchstart", this.defend, this);
-  
+        this.node.on ("touchend", this.touchEnd, this);
     },
+    touchStart () {
+        this._isTouchFinished = false;
+    },
+
+    touchEnd () {
+        this._isTouchFinished = true;
+    },
+
+    setTouchFinish () {
+
+        this._isTouchFinished = true;
+    },
+
 
     defend (event) {
         // also check region
         // check if it is on shield 
         // GM  
-        console.clear ();
+        console.clear (); 
         var curTouchPos = event.getTouches ()[0].getLocation ();
         var curTouchTime = Date.now ();
-        
+        cc.log (curTouchPos);
+        cc.log (this._lastTouchPos);
         if (this.compareTwoPos (curTouchPos, this._lastTouchPos) || (this._lastTouchPos.x == 0 && this._lastTouchPos.y == 0)) {
             if (this._touchCount == 0 && this._lastTouchTime == 0) {
                 this._touchCount++;
@@ -57,7 +73,6 @@ cc.Class({
                     this._touchCount = 0;
                     this._lastTouchTime = 0;
                     this._lastTouchPos = cc.v2 (0, 0);
-    
                     cc.log ("next touch without gap");
                     cc.log (this._touchCount);
                 }
@@ -65,9 +80,16 @@ cc.Class({
     
             if (this._touchCount == this._touchTimesThreshold) {
                 this._touchCount = 0;
+                this._lastTouchTime = 0;
                 this._lastTouchPos = cc.v2 (0, 0);
                 cc.log ("hit the maximum touch");
             }
+        } else {
+            this._touchCount = 1;
+            this._lastTouchTime = curTouchTime;
+            this._lastTouchPos = curTouchPos;
+            cc.log ("new first touch");
+            cc.log (this._touchCount);
         }
     },
 
@@ -84,52 +106,55 @@ cc.Class({
     },
     
     move (event) {
-        //cc.log ("move");
-        var gm = cc.find ("Utility/Game Manager").getComponent("GameManager");
-        var startTouch = event.getTouches ()[0].getStartLocation ();
-        var curTouch = event.getTouches ()[0].getLocation ();
-        var xDif = curTouch.x - startTouch.x;
-        var yDif = curTouch.y - startTouch.y;
-
-        if (!gm.getGameState ()) {
-            if (!this._isOnAir) {
-                if (this._isOnLeft) {
-                    if (!this._isInverted) {    // not inverted
-                        if (xDif > this._swipeThreshold) {
-                            // left & swiping right
-                            this.moveToRight ();
-                        } else if (xDif < -this._swipeThreshold) {
-                            // left & swiping left
-                            //this.moveToLeft ();
-                        }
-                    } else {    // inverted
-                        if (xDif > this._swipeThreshold) {
-                            // left & swiping right
-                            //this.moveToLeft ();
-                         
-                        } else if (xDif < -this._swipeThreshold) {
-                            this.moveToRight ();
-                        }
-                    }    
-                } else {
-                    if (!this._isInverted) {
-                        if (xDif > this._swipeThreshold) {
-                            //this.moveToLeft ();
-                         
-                        } else if (xDif < -this._swipeThreshold) {
-                            this.moveToLeft ();
-                        }
+        if (!this._isTouchFinished) {
+            cc.log ("swipe");
+            var gm = cc.find ("Utility/Game Manager").getComponent("GameManager");
+            var startTouch = event.getTouches ()[0].getStartLocation ();
+            var curTouch = event.getTouches ()[0].getLocation ();
+            var xDif = curTouch.x - startTouch.x;
+            var yDif = curTouch.y - startTouch.y;
+    
+            if (!gm.getGameState ()) {
+                if (!this._isOnAir) {
+                    if (this._isOnLeft) {
+                        if (!this._isInverted) {    // not inverted
+                            if (xDif > this._swipeThreshold) {
+                                // left & swiping right
+                                this.moveToRight ();
+                            } else if (xDif < -this._swipeThreshold) {
+                                // left & swiping left
+                                //this.moveToLeft ();
+                            }
+                        } else {    // inverted
+                            if (xDif > this._swipeThreshold) {
+                                // left & swiping right
+                                //this.moveToLeft ();
+                             
+                            } else if (xDif < -this._swipeThreshold) {
+                                this.moveToRight ();
+                            }
+                        }    
                     } else {
-                        if (xDif > this._swipeThreshold) {
-                            this.moveToLeft ();
-                         
-                        } else if (xDif < -this._swipeThreshold) {
-                            //this.moveToLeft ();
-                        }
-                    }    
-                }
-            }   
+                        if (!this._isInverted) {
+                            if (xDif > this._swipeThreshold) {
+                                //this.moveToLeft ();
+                             
+                            } else if (xDif < -this._swipeThreshold) {
+                                this.moveToLeft ();
+                            }
+                        } else {
+                            if (xDif > this._swipeThreshold) {
+                                this.moveToLeft ();
+                             
+                            } else if (xDif < -this._swipeThreshold) {
+                                //this.moveToLeft ();
+                            }
+                        }    
+                    }
+                }   
+            }
         }
+        
     },
 
     invertControl () {
@@ -151,6 +176,7 @@ cc.Class({
             this._isOnAir = false;
         };
         this.warrior.runAction (cc.sequence (moveToLeft, cc.callFunc (enableMoveToRight, this)));
+        this.setTouchFinish ();
     },
 
     moveToRight (){
@@ -163,5 +189,6 @@ cc.Class({
             this._isOnAir = false;
         }
         this.warrior.runAction (cc.sequence (moveToRight, cc.callFunc (enableMoveToLeft, this)));
+        this.setTouchFinish ();
     }
 });
