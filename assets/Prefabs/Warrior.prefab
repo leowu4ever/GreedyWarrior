@@ -16,26 +16,29 @@
     "_children": [
       {
         "__id__": 2
+      },
+      {
+        "__id__": 5
+      },
+      {
+        "__id__": 8
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 5
+        "__id__": 11
       },
       {
-        "__id__": 6
+        "__id__": 12
       },
       {
-        "__id__": 7
-      },
-      {
-        "__id__": 8
+        "__id__": 13
       }
     ],
     "_prefab": {
-      "__id__": 9
+      "__id__": 14
     },
     "_id": "",
     "_opacity": 255,
@@ -75,7 +78,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Shield",
+    "_name": "Warrior Shield",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -165,11 +168,65 @@
     "sync": false
   },
   {
+    "__type__": "cc.Node",
+    "_name": "Normal Warrior",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 6
+      }
+    ],
+    "_prefab": {
+      "__id__": 7
+    },
+    "_id": "",
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 12,
+      "height": 14
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
     "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 1
+      "__id__": 5
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -189,6 +246,108 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": null
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "d373926c-5c80-4223-926b-9a53bc42628a"
+    },
+    "fileId": "c2Ff2J1MBF+a0nvJHTzFwj",
+    "sync": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Inverted Warrior",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 9
+      }
+    ],
+    "_prefab": {
+      "__id__": 10
+    },
+    "_id": "",
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 7,
+      "height": 14
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": -0.5,
+      "y": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 8
+    },
+    "_enabled": true,
+    "_spriteFrame": {
+      "__uuid__": "ad9b9b61-9796-4446-99db-6ca2e8119d97"
+    },
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_atlas": null
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "d373926c-5c80-4223-926b-9a53bc42628a"
+    },
+    "fileId": "a2WeLsa21GKISPKlYC0htD",
+    "sync": false
   },
   {
     "__type__": "cc.BoxCollider",
@@ -218,15 +377,19 @@
       "__id__": 1
     },
     "_enabled": true,
-    "speed": 0,
-    "life": 0,
-    "normalSpriteFrame": {
-      "__uuid__": "be1e5e4b-20e5-40a8-8ae4-875e13a65405"
+    "speed": 1,
+    "life": 1,
+    "_isImmortal": false,
+    "shield": {
+      "__id__": 2
     },
-    "invertedSpriteFrame": {
-      "__uuid__": "ad9b9b61-9796-4446-99db-6ca2e8119d97"
+    "invertedWarrior": {
+      "__id__": 8
     },
-    "_isImmortal": false
+    "normalWarrior": {
+      "__id__": 5
+    },
+    "shieldDuration": 3
   },
   {
     "__type__": "cc.Animation",

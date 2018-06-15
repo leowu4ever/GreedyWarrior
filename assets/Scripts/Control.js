@@ -18,7 +18,6 @@ cc.Class({
         _lastTouchPos: cc.v2 (0, 0),
         _touchPosAreaThreshold: 30,
         _isTouchFinished: true,
-        
     },
 
     onLoad () {
@@ -83,6 +82,13 @@ cc.Class({
                 this._touchCount = 0;
                 this._lastTouchTime = 0;
                 this._lastTouchPos = cc.v2 (0, 0);
+
+                var warriorComponent = this.warrior.getComponent ("Warrior");
+                // call show shield
+                warriorComponent.showShield ();
+                warriorComponent.scheduleOnce (function () {
+                    warriorComponent.hideShield ();
+                }, warriorComponent.shieldDuration);
                 cc.log ("hit the maximum touch");
             }
         } else {

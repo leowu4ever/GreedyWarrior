@@ -4,13 +4,18 @@ cc.Class({
     properties: {
         speed: 0,
         life: 0,
-        normalSpriteFrame: cc.SpriteFrame,
-        invertedSpriteFrame: cc.SpriteFrame,
+
         _isImmortal: false,
+        shield: cc.Node,
+        invertedWarrior: cc.Node,
+        normalWarrior: cc.Node,
+        shieldDuration: 3,
     },
 
 
     start () {
+        this.invertedWarrior.opacity = 0;
+        this.shield.opacity = 0;
     },
 
     onCollisionEnter: function (other, self) {
@@ -23,11 +28,23 @@ cc.Class({
 
     // show shield 
     showShield () {
-
+        this.shield.runAction (cc.fadeTo (0.2, 255));
+        this.normalWarrior.opacity = 50;
     },
 
-    showMad () {
+    hideShield () {
+        this.shield.runAction (cc.fadeTo (0.2, 0));
+        this.normalWarrior.opacity = 255;
+    },
 
-    }
+    showInvertedWarrior () {
+        this.normalWarrior.opacity = 0;
+        this.invertedWarrior.opacity = 255;
+    },
+
+    showNormalWarrior () {
+        this.normalWarrior.opacity = 255;
+        this.invertedWarrior.opacity = 0;
+    }    
 
 });
