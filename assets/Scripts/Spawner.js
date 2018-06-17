@@ -22,7 +22,6 @@ var Spawner = cc.Class({
     },
     
     ctor () {
-        //this.hidePointNodes ();
     },
 
     hidePointNodes () {
@@ -56,61 +55,8 @@ var Spawner = cc.Class({
         chest.runAction (moveUpwards);
     },
 
-    // clean up code using animation
-    createABat (color) { // white 0, black 1
-        var bat = cc.instantiate (this.bat[0]);
-        bat.parent = this.canvas;
-        bat.setPosition (cc.v2(0, this.leftSpawnPoint.y));
-
-        var speed = 1/bat.getComponent ("Bat").enemyProperty.speed;
-        var weaponSpeed = bat.getComponent ("Bat").weaponSpeed;
-        var moveUpwards = cc.moveBy (speed, 0, cc.visibleRect.height/3);
-
-        var flashWarning = function () {
-            // show warning according to play position
-            var warriorWorldPos = this.warrior.getParent ().convertToWorldSpaceAR (this.warrior.getPosition());
-            var warriorNodePos = bat.convertToNodeSpaceAR (warriorWorldPos);
-            
-            if (warriorNodePos.x < 0) {
-                var warning = bat.getChildByName ("Bat Left Warning");
-                var weapon = bat.getChildByName ("Bat Left Weapon");
-
-                var warriorLeftWorldPos = this.warrior.getParent ().convertToWorldSpaceAR (this.warriorLeftPoint.getPosition());
-                var warriorLeftPoint = bat.convertToNodeSpaceAR (warriorLeftWorldPos);
-                var fireWeapon = cc.moveTo (weaponSpeed, warriorLeftPoint.x, warriorLeftPoint.y);
-
-            } else {
-                var warning = bat.getChildByName ("Bat Right Warning");
-                var weapon = bat.getChildByName ("Bat Right Weapon");
-
-                var warriorRightWorldPos = this.warrior.getParent ().convertToWorldSpaceAR (this.warriorRightPoint.getPosition());
-                var warriorRightPoint = bat.convertToNodeSpaceAR (warriorRightWorldPos);
-
-                var fireWeapon = cc.moveTo (weaponSpeed, warriorRightPoint.x, warriorRightPoint.y);
-
-            }
-
-            var showAndFireWeapon = function () {
-                var hideBatAndWeapon = function () {
-                    cc.log ("hide");
-                    bat.runAction (cc.fadeTo(0.5, 0));
-                };
-
-                var showArrow = cc.fadeTo(0.1, 255); 
-                var sequence = cc.sequence (showArrow, fireWeapon, cc.callFunc (hideBatAndWeapon, this));
-                weapon.runAction(sequence);
-                            
-            };
-            var flashWarning = cc.sequence (cc.fadeTo (0.2, 255), cc.fadeTo (1, 0), cc.callFunc (showAndFireWeapon, this));
-            warning.runAction (flashWarning);
-
-        }
-
-        bat.runAction (cc.sequence (moveUpwards, cc.callFunc (flashWarning, this)));
-    },
 
     createAGhost () {
-
         var ghostGroup = cc.instantiate (this.ghost);
         ghostGroup.parent = this.canvas;
 
@@ -120,14 +66,13 @@ var Spawner = cc.Class({
         var that = this;
         ghostGroup.getComponent ("Ghost").scheduleOnce (function () {
             control.invertControl ();
-            that.warrior.getComponent ("Warrior").showInvertedWarrior ();  // call warrior method  TODO
+            that.warrior.getComponent ("Warrior").showInvertedWarrior (); 
         }, 2);
 
         var revertControl = function () {
             control.revertControl ();
-            this.warrior.getComponent ("Warrior").showNormalWarrior ();  // call warrior method  TODO
+            this.warrior.getComponent ("Warrior").showNormalWarrior ();  
         };
-        
         ghostGroup.runAction (cc.sequence (cc.delayTime (invertTime), cc.fadeTo (0.5, 0), cc.callFunc (revertControl, this)));
     },
     
@@ -138,18 +83,10 @@ var Spawner = cc.Class({
         wizardGroup.setPosition (this.leftWarning); 
     },
 
-    test () {
-        // spawn 
-        // set to position
-        // use moveTo
-        // bat has flying animation palying on load         
+    createABat (batType) {
         var batGroup = cc.instantiate (this.bat_white);
         batGroup.parent =  this.canvas;
         batGroup.setPosition (cc.v2 (0, this.leftSpawnPoint.y));
-
-        // flying
-
-        
     }
 
 });

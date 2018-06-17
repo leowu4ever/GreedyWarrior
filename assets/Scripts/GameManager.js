@@ -19,7 +19,7 @@ cc.Class({
         // this.spawner.createAWizard ();
         // this.schedule (this.createEnemy, 3);
 
-        this.spawner.test ();
+        this.spawner.createABat (0);
 
     },
 
