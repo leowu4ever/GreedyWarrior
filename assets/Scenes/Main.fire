@@ -1165,7 +1165,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Right Waning",
+    "_name": "Right Warning",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2

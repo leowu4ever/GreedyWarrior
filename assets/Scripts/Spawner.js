@@ -32,27 +32,15 @@ var Spawner = cc.Class({
         this.warriorLeftPoint.opacity = 0;
         this.warriorRightPoint.opacity = 0;
     },
+    test () {
+        var chest = cc.instantiate (this.chest);    // dont keep instantiate            
+        chest.parent = this.canvas;
+    },
+
 
     createAChest () {
         var chest = cc.instantiate (this.chest);    // dont keep instantiate            
         chest.parent = this.canvas;
-        
-        var randomNum = Math.random ();
-        var flashWarning = cc.sequence (cc.fadeTo (0.3, 255), cc.fadeTo (0.1, 0));
-        if (randomNum > 0.5) {
-            this.leftWarning.runAction (flashWarning);
-            chest.setPosition (cc.v2 (this.leftSpawnPoint.x, this.leftSpawnPoint.y));
-
-        } else {
-            this.rightWarning.runAction (flashWarning);
-            chest.setPosition (cc.v2 (this.rightSpawnPoint.x, this.rightSpawnPoint.y));
-            chest.setScale (5, -5);
-        }
-        
-        var speed = chest.getComponent ("Chest").enemyProperty.speed;
-        var moveUpwards = cc.sequence (cc.delayTime (1), cc.moveBy (1/speed, 0, -this.rightSpawnPoint.y*2)); 
-        
-        chest.runAction (moveUpwards);
     },
 
     createAWizard () {
