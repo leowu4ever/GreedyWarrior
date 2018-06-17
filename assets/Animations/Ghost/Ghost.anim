@@ -130,5 +130,11 @@
       }
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 2,
+      "func": "showAndInvert",
+      "params": []
+    }
+  ]
 }

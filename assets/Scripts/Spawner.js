@@ -55,28 +55,6 @@ var Spawner = cc.Class({
         chest.runAction (moveUpwards);
     },
 
-
-    createAGhost () {
-        var ghostGroup = cc.instantiate (this.ghost);
-        ghostGroup.parent = this.canvas;
-
-        ghostGroup.setPosition (cc.v2 (0, 0));   // need related pos
-        var invertTime = ghostGroup.getComponent ("Ghost").invertTime;
-        var control = this.canvas.getComponent("Control");
-        var that = this;
-        ghostGroup.getComponent ("Ghost").scheduleOnce (function () {
-            control.invertControl ();
-            that.warrior.getComponent ("Warrior").showInvertedWarrior (); 
-        }, 2);
-
-        var revertControl = function () {
-            control.revertControl ();
-            this.warrior.getComponent ("Warrior").showNormalWarrior ();  
-        };
-        ghostGroup.runAction (cc.sequence (cc.delayTime (invertTime), cc.fadeTo (0.5, 0), cc.callFunc (revertControl, this)));
-    },
-    
-
     createAWizard () {
         var wizardGroup = cc.instantiate (this.wizard);
         wizardGroup.parent = this.canvas;
@@ -87,6 +65,12 @@ var Spawner = cc.Class({
         var batGroup = cc.instantiate (this.bat_white);
         batGroup.parent =  this.canvas;
         batGroup.setPosition (cc.v2 (0, this.leftSpawnPoint.y));
+    },
+
+    createAGhost () {
+        var ghostGroup = cc.instantiate (this.ghost);
+        ghostGroup.parent = this.canvas;
+
     }
 
 });

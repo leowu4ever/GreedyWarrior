@@ -14,12 +14,11 @@ cc.Class({
     start () {
 
         // spawn algorithm
-        // this.spawner.hidePointNodes ();
-        // this.spawner.createAGhost ();
+        this.spawner.hidePointNodes ();
+        this.spawner.createAGhost ();
         // this.spawner.createAWizard ();
         // this.schedule (this.createEnemy, 3);
-
-        this.spawner.createABat (0);
+        //this.spawner.createABat (0);
 
     },
 
