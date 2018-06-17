@@ -18,6 +18,7 @@ var Spawner = cc.Class({
         chestShowUpDelay: 0.3,
         warriorLeftPoint: cc.Node,
         warriorRightPoint: cc.Node,
+        bat_white: cc.Prefab,
     },
     
     ctor () {
@@ -135,6 +136,20 @@ var Spawner = cc.Class({
         var wizardGroup = cc.instantiate (this.wizard);
         wizardGroup.parent = this.canvas;
         wizardGroup.setPosition (this.leftWarning); 
+    },
+
+    test () {
+        // spawn 
+        // set to position
+        // use moveTo
+        // bat has flying animation palying on load         
+        var batGroup = cc.instantiate (this.bat_white);
+        batGroup.parent =  this.canvas;
+        batGroup.setPosition (cc.v2 (0, this.leftSpawnPoint.y));
+
+        // flying
+
+        
     }
 
 });
