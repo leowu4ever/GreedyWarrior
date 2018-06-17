@@ -12,7 +12,6 @@ cc.Class({
         shieldDuration: 3,
     },
 
-
     start () {
         this.invertedWarrior.opacity = 0;
         this.shield.opacity = 0;
@@ -22,11 +21,6 @@ cc.Class({
         cc.log ("hitted by an enemy");
     },
 
-    // change warrior sprite here 
-    // change gm script TODO
-
-
-    // show shield 
     showShield () {
         this.shield.runAction (cc.fadeTo (0.2, 255));
         this.normalWarrior.opacity = 50;

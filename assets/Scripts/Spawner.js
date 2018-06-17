@@ -19,6 +19,7 @@ var Spawner = cc.Class({
         warriorLeftPoint: cc.Node,
         warriorRightPoint: cc.Node,
         bat_white: cc.Prefab,
+        bat_black: cc.Prefab,
     },
     
     ctor () {
@@ -32,11 +33,6 @@ var Spawner = cc.Class({
         this.warriorLeftPoint.opacity = 0;
         this.warriorRightPoint.opacity = 0;
     },
-    test () {
-        var chest = cc.instantiate (this.chest);    // dont keep instantiate            
-        chest.parent = this.canvas;
-    },
-
 
     createAChest () {
         var chest = cc.instantiate (this.chest);    // dont keep instantiate            
@@ -50,7 +46,12 @@ var Spawner = cc.Class({
     },
 
     createABat (batType) {
-        var batGroup = cc.instantiate (this.bat_white);
+        var batGroup;
+        if (batType == "White") {
+            batGroup = cc.instantiate (this.bat_white);
+        } else if (batType == "Black") {
+            batGroup = cc.instantiate (this.bat_black);
+        }
         batGroup.parent =  this.canvas;
         batGroup.setPosition (cc.v2 (0, this.leftSpawnPoint.y));
     },
@@ -58,7 +59,6 @@ var Spawner = cc.Class({
     createAGhost () {
         var ghostGroup = cc.instantiate (this.ghost);
         ghostGroup.parent = this.canvas;
-
     }
 
 });
