@@ -8,7 +8,7 @@ cc.Class({
 
 
     start () {
-
+        //this.node.runAction (cc.bezierTo (1, 0, 0));
     },
 
     //TODO
