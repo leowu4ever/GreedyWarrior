@@ -47,6 +47,17 @@ cc.Class({
 
     getGameState () {
         return this._isStopped;
-    }
+    },
 
+    startGame () {
+
+    },
+
+    restartGame () {
+
+    },
+
+    shareGame () {
+        
+    }
 });
