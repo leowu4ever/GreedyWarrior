@@ -15,6 +15,7 @@ cc.Class({
     start () {
         this.invertedWarrior.opacity = 0;
         this.shield.opacity = 0;
+        this.node.y = this.node.y + cc.visibleRect.height;
     },
 
     onCollisionEnter: function (other, self) {
@@ -40,5 +41,6 @@ cc.Class({
         this.normalWarrior.opacity = 255;
         this.invertedWarrior.opacity = 0;
     }    
+
 
 });

@@ -3,26 +3,28 @@ cc.Class({
 
     properties: {
         uiSpeed: 1,
+        gm: cc.Node,
     },
 
     start () {
-
+        var scoreUI = cc.find ("Canvas/Score UI");
+        scoreUI.y = scoreUI.y + cc.visibleRect.height;
     },
 
     startGameAndDismissUI () {
         // game manager startGmae
         // dismiss start UI
         this._dismissStartUI ();
-        var gm = cc.find ("Utility/Game Manager").getComponent ("GameManager");
-        gm.startGame ();
+        var gmComp = this.gm.getComponent ("GameManager");
+        gmComp.startGame ();
         this._replaceWarrior ();
     },
 
     restartGameAndDismissUI () {
         this._dismissRestartUI ();
-        var gm = cc.find ("Utility/Game Manager").getComponent ("GameManager");
-        gm.restartGame ();
-        this._replaceWarrior ();
+        var gmComp = this.gm.getComponent ("GameManager");
+        gmComp.restartGame ();
+        //this._replaceWarrior ();
     },    
 
     _dismissStartUI () {
@@ -39,6 +41,12 @@ cc.Class({
 
     _replaceWarrior () {
         // warrior running into scene
-
+        var warrior = cc.find ("Canvas/Warrior");
+        warrior.runAction (cc.moveBy (1, 0, -cc.visibleRect.height));
     },
+    
+    showScoreUI () {
+        var scoreUI = cc.find ("Canvas/Score UI");
+        scoreUI.runAction (cc.moveBy (1, 0, -cc.visibleRect.height));
+    }
 });

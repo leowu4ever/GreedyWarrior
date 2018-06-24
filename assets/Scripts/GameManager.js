@@ -9,6 +9,7 @@ cc.Class({
         _score: 0,
         _isStopped: false,
         _isDefending: false,
+        uiController: cc.Node,
     },
 
     start () {
@@ -28,8 +29,8 @@ cc.Class({
     //     this.schedule (createEnemyFunction, enemyInterval, numOfEnemy - 1);      
     // },
     
-    createEnemy () {
-        this.spawner.createAChest ();  
+    _createEnemy () {
+        this.spawner.createAChest ();
         this.spawner.createABat ("Black");
     },
 
@@ -39,9 +40,10 @@ cc.Class({
     },
 
     stopGame () {
-        //this.unschedule (this.createEnemy);
-        //this._isStopped = true;   // for testing
-        cc.log ("stop");
+        this.unschedule (this.createEnemy);
+        this._isStopped = true;   // for testing
+        var uiControllerComp = this.uiController.getComponent ("UIController");
+        uiControllerComp.showScoreUI ();
     },
 
 
@@ -50,16 +52,18 @@ cc.Class({
     },
 
     startGame () {
-
+        this._createEnemy ();
+        this._isStopped = false;
     },
 
     restartGame () {
-
+        this._createEnemy ();
+        this._isStopped = false;
     },
 
     shareGame () {
         
     }
 
-    
+
 });

@@ -1804,7 +1804,10 @@
     },
     "_score": 0,
     "_isStopped": false,
-    "_isDefending": false
+    "_isDefending": false,
+    "uiController": {
+      "__id__": 44
+    }
   },
   {
     "__type__": "Spawner",
@@ -1910,7 +1913,10 @@
       "__id__": 44
     },
     "_enabled": true,
-    "uiSpeed": 1
+    "uiSpeed": 1,
+    "gm": {
+      "__id__": 46
+    }
   },
   {
     "__type__": "cc.Node",
