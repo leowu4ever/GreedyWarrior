@@ -17,7 +17,7 @@
         "__id__": 2
       },
       {
-        "__id__": 57
+        "__id__": 45
       }
     ],
     "_tag": -1,
@@ -95,17 +95,17 @@
         "__id__": 34
       },
       {
-        "__id__": 44
+        "__id__": 54
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 55
+        "__id__": 65
       },
       {
-        "__id__": 56
+        "__id__": 66
       }
     ],
     "_prefab": null,
@@ -1478,7 +1478,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Buttom_1_Bg",
+    "_name": "Play Button",
     "_objFlags": 0,
     "_parent": {
       "__id__": 34
@@ -1615,10 +1615,302 @@
   },
   {
     "__type__": "cc.ClickEvent",
-    "target": null,
-    "component": "",
-    "handler": "",
+    "target": {
+      "__id__": 44
+    },
+    "component": "UIController",
+    "handler": "startGameAndDismissUI",
     "customEventData": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "UI  Controller",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 45
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 53
+      }
+    ],
+    "_prefab": null,
+    "_id": "abXtu00EFJoqgGqkoa9HWu",
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Utility",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [
+      {
+        "__id__": 46
+      },
+      {
+        "__id__": 44
+      }
+    ],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 51
+      },
+      {
+        "__id__": 52
+      }
+    ],
+    "_prefab": null,
+    "_id": "1efyScisZJCpMdq5X00Uji",
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Game Manager",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 45
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 47
+      }
+    ],
+    "_prefab": null,
+    "_id": "ecyWEK+uBFXLrTcI3ATLz6",
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+    "__type__": "d3d92TYbvhLIZcnaa8uMVqs",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 46
+    },
+    "_enabled": true,
+    "spawner": {
+      "__id__": 48
+    },
+    "scoreLabel": {
+      "__id__": 15
+    },
+    "_score": 0,
+    "_isStopped": false,
+    "_isDefending": false
+  },
+  {
+    "__type__": "Spawner",
+    "chest": {
+      "__uuid__": "7454a564-84be-47ce-97ee-feaf51b166de"
+    },
+    "ghost": {
+      "__uuid__": "00ca5789-3592-4d63-a1cd-4c389e5af450"
+    },
+    "wizard": {
+      "__uuid__": "9c02bafe-c801-4880-b9fe-18d6d8e13c66"
+    },
+    "canvas": {
+      "__id__": 2
+    },
+    "bat": [
+      {
+        "__uuid__": "c8218636-33c6-4a97-a743-eec76b5b3947"
+      },
+      null
+    ],
+    "warrior": {
+      "__id__": 18
+    },
+    "wave": [
+      {
+        "__id__": 49
+      },
+      {
+        "__id__": 50
+      }
+    ],
+    "leftSpawnPoint": {
+      "__id__": 24
+    },
+    "rightSpawnPoint": {
+      "__id__": 27
+    },
+    "leftWarning": {
+      "__id__": 30
+    },
+    "rightWarning": {
+      "__id__": 32
+    },
+    "chestShowUpDelay": 1,
+    "warriorLeftPoint": {
+      "__id__": 20
+    },
+    "warriorRightPoint": {
+      "__id__": 22
+    },
+    "bat_white": {
+      "__uuid__": "c8218636-33c6-4a97-a743-eec76b5b3947"
+    },
+    "bat_black": {
+      "__uuid__": "75f798a4-4915-45ca-a134-b054a040533b"
+    }
+  },
+  {
+    "__type__": "Wave",
+    "enemy": null,
+    "numOfEnemy": 1,
+    "enemyInterval": 1,
+    "waveDelay": 1
+  },
+  {
+    "__type__": "Wave",
+    "enemy": {
+      "__uuid__": "c8218636-33c6-4a97-a743-eec76b5b3947"
+    },
+    "numOfEnemy": 1,
+    "enemyInterval": 1,
+    "waveDelay": 1
+  },
+  {
+    "__type__": "27eb7LW3VNPSo5MhbyLQh/j",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 45
+    },
+    "_enabled": true
+  },
+  {
+    "__type__": "cc.AudioSource",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 45
+    },
+    "_enabled": true,
+    "_volume": 1,
+    "_mute": false,
+    "_loop": true,
+    "playOnLoad": false,
+    "preload": false
+  },
+  {
+    "__type__": "b3593S2b8JKULNJlFNS5HeA",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 44
+    },
+    "_enabled": true,
+    "uiSpeed": 1
   },
   {
     "__type__": "cc.Node",
@@ -1629,13 +1921,13 @@
     },
     "_children": [
       {
-        "__id__": 45
+        "__id__": 55
       },
       {
-        "__id__": 47
+        "__id__": 57
       },
       {
-        "__id__": 51
+        "__id__": 61
       }
     ],
     "_tag": -1,
@@ -1683,14 +1975,14 @@
     "_name": "ScoreLabel",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 44
+      "__id__": 54
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 46
+        "__id__": 56
       }
     ],
     "_prefab": null,
@@ -1735,7 +2027,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 45
+      "__id__": 55
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1758,20 +2050,20 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Buttom_3_Bg",
+    "_name": "Restart Button",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 44
+      "__id__": 54
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 48
+        "__id__": 58
       },
       {
-        "__id__": 49
+        "__id__": 59
       }
     ],
     "_prefab": null,
@@ -1816,7 +2108,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 47
+      "__id__": 57
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1842,7 +2134,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 47
+      "__id__": 57
     },
     "_enabled": true,
     "transition": 3,
@@ -1864,7 +2156,7 @@
     "zoomScale": 1.1,
     "clickEvents": [
       {
-        "__id__": 50
+        "__id__": 60
       }
     ],
     "_N$interactable": true,
@@ -1890,32 +2182,34 @@
     "hoverSprite": null,
     "_N$disabledSprite": null,
     "_N$target": {
-      "__id__": 47
+      "__id__": 57
     }
   },
   {
     "__type__": "cc.ClickEvent",
-    "target": null,
-    "component": "",
-    "handler": "",
+    "target": {
+      "__id__": 44
+    },
+    "component": "UIController",
+    "handler": "restartGameAndDismissUI",
     "customEventData": ""
   },
   {
     "__type__": "cc.Node",
-    "_name": "Buttom_2_Bg",
+    "_name": "Share Button",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 44
+      "__id__": 54
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
-        "__id__": 52
+        "__id__": 62
       },
       {
-        "__id__": 53
+        "__id__": 63
       }
     ],
     "_prefab": null,
@@ -1960,7 +2254,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 51
+      "__id__": 61
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1986,7 +2280,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 51
+      "__id__": 61
     },
     "_enabled": true,
     "transition": 3,
@@ -2008,7 +2302,7 @@
     "zoomScale": 1.1,
     "clickEvents": [
       {
-        "__id__": 54
+        "__id__": 64
       }
     ],
     "_N$interactable": true,
@@ -2034,7 +2328,7 @@
     "hoverSprite": null,
     "_N$disabledSprite": null,
     "_N$target": {
-      "__id__": 51
+      "__id__": 61
     }
   },
   {
@@ -2094,233 +2388,5 @@
     },
     "_touchPosAreaThreshold": 30,
     "_isTouchFinished": true
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "Utility",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 1
-    },
-    "_children": [
-      {
-        "__id__": 58
-      }
-    ],
-    "_tag": -1,
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 63
-      },
-      {
-        "__id__": 64
-      }
-    ],
-    "_prefab": null,
-    "_id": "1efyScisZJCpMdq5X00Uji",
-    "_opacity": 255,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_cascadeOpacityEnabled": true,
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
-    },
-    "_rotationX": 0,
-    "_rotationY": 0,
-    "_scaleX": 1,
-    "_scaleY": 1,
-    "_position": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_skewX": 0,
-    "_skewY": 0,
-    "_localZOrder": 0,
-    "_globalZOrder": 0,
-    "_opacityModifyRGB": false,
-    "groupIndex": 0
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "Game Manager",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 57
-    },
-    "_children": [],
-    "_tag": -1,
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 59
-      }
-    ],
-    "_prefab": null,
-    "_id": "ecyWEK+uBFXLrTcI3ATLz6",
-    "_opacity": 255,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_cascadeOpacityEnabled": true,
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
-    },
-    "_rotationX": 0,
-    "_rotationY": 0,
-    "_scaleX": 1,
-    "_scaleY": 1,
-    "_position": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_skewX": 0,
-    "_skewY": 0,
-    "_localZOrder": 0,
-    "_globalZOrder": 0,
-    "_opacityModifyRGB": false,
-    "groupIndex": 0
-  },
-  {
-    "__type__": "d3d92TYbvhLIZcnaa8uMVqs",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 58
-    },
-    "_enabled": true,
-    "spawner": {
-      "__id__": 60
-    },
-    "scoreLabel": {
-      "__id__": 15
-    },
-    "_score": 0,
-    "_isStopped": false,
-    "_isDefending": false
-  },
-  {
-    "__type__": "Spawner",
-    "chest": {
-      "__uuid__": "7454a564-84be-47ce-97ee-feaf51b166de"
-    },
-    "ghost": {
-      "__uuid__": "00ca5789-3592-4d63-a1cd-4c389e5af450"
-    },
-    "wizard": {
-      "__uuid__": "9c02bafe-c801-4880-b9fe-18d6d8e13c66"
-    },
-    "canvas": {
-      "__id__": 2
-    },
-    "bat": [
-      {
-        "__uuid__": "c8218636-33c6-4a97-a743-eec76b5b3947"
-      },
-      null
-    ],
-    "warrior": {
-      "__id__": 18
-    },
-    "wave": [
-      {
-        "__id__": 61
-      },
-      {
-        "__id__": 62
-      }
-    ],
-    "leftSpawnPoint": {
-      "__id__": 24
-    },
-    "rightSpawnPoint": {
-      "__id__": 27
-    },
-    "leftWarning": {
-      "__id__": 30
-    },
-    "rightWarning": {
-      "__id__": 32
-    },
-    "chestShowUpDelay": 1,
-    "warriorLeftPoint": {
-      "__id__": 20
-    },
-    "warriorRightPoint": {
-      "__id__": 22
-    },
-    "bat_white": {
-      "__uuid__": "c8218636-33c6-4a97-a743-eec76b5b3947"
-    },
-    "bat_black": {
-      "__uuid__": "75f798a4-4915-45ca-a134-b054a040533b"
-    }
-  },
-  {
-    "__type__": "Wave",
-    "enemy": null,
-    "numOfEnemy": 1,
-    "enemyInterval": 1,
-    "waveDelay": 1
-  },
-  {
-    "__type__": "Wave",
-    "enemy": {
-      "__uuid__": "c8218636-33c6-4a97-a743-eec76b5b3947"
-    },
-    "numOfEnemy": 1,
-    "enemyInterval": 1,
-    "waveDelay": 1
-  },
-  {
-    "__type__": "27eb7LW3VNPSo5MhbyLQh/j",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 57
-    },
-    "_enabled": true
-  },
-  {
-    "__type__": "cc.AudioSource",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 57
-    },
-    "_enabled": true,
-    "_clip": {
-      "__uuid__": "dca608a7-4637-4a55-a1a1-dc2394436d1a"
-    },
-    "_volume": 1,
-    "_mute": false,
-    "_loop": true,
-    "playOnLoad": false,
-    "preload": false
   }
 ]

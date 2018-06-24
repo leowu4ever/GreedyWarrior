@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "1eb36f9e-0f92-4103-ba7a-3433467539ab",
+  "uuid": "8e63b6fe-53af-4313-a6d0-2bcfb17ba704",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "Buttom_1_Bg": {
+    "Restart": {
       "ver": "1.0.3",
-      "uuid": "78785eed-c611-4419-8aa7-c0d1171ca3a2",
-      "rawTextureUuid": "1eb36f9e-0f92-4103-ba7a-3433467539ab",
+      "uuid": "fe4f4ee4-0e30-4585-a43a-73bdcce9e281",
+      "rawTextureUuid": "8e63b6fe-53af-4313-a6d0-2bcfb17ba704",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

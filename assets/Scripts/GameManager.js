@@ -60,4 +60,6 @@ cc.Class({
     shareGame () {
         
     }
+
+    
 });
