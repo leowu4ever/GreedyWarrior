@@ -31,7 +31,7 @@ cc.Class({
     // },
     
     _createEnemy () {
-        this.spawner.createAChest ();
+        //this.spawner.createAChest ();
         this.spawner.createABat ("Black");
 
         // rythme, pace, combo

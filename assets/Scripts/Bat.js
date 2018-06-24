@@ -24,58 +24,48 @@ cc.Class({
     },
 
     flashWarningAndFire () {
-        var warrior = cc.find ("Canvas/Warrior");
-        var warriorWorldPos = warrior.getParent ().convertToWorldSpaceAR (warrior.getPosition());
-        var warriorPos = this.node.convertToNodeSpaceAR (warriorWorldPos);
+        var leftWarning = this.node.getChildByName ("Bat Left Warning");
+        var rightWarning = this.node.getChildByName ("Bat Right Warning");
+        var leftWarriorPoint = cc.find ("Canvas/Warrior Left Point");
+        var rightWarriorPoint = cc.find ("Canvas/Warrior Right Point");
         var warning;
         var targetPoint;
+        var warriorPos = cc.find ("Canvas/Warrior").getPosition ();
+
         var flashWarningSeq = cc.sequence (cc.fadeTo (this.warningFadeInDuration, 255), cc.fadeTo (this.warningFadeOutDuration, 0));
         if (warriorPos.x < 0) {
-            warning = this.node.getChildByName ("Bat Left Warning");
-            targetPoint = cc.find ("Canvas/Warrior Left Point");
+            warning = leftWarning;
+            targetPoint = leftWarriorPoint
         } else {
-            warning = this.node.getChildByName ("Bat Right Warning");
-            targetPoint = cc.find ("Canvas/Warrior Right Point");
+            warning = rightWarning;
+            targetPoint = rightWarriorPoint;
         }
         if (this.batType == "White") {
             warning.runAction (flashWarningSeq);
         }
 
-        var targetWorldPos = warrior.getParent ().convertToWorldSpaceAR (targetPoint.getPosition());
-        var targetPos = this.node.convertToNodeSpaceAR (targetWorldPos);
+        var targetPos = this._getTargetPos (targetPoint);
         var weapon = this.node.getChildByName ("Bat Left Weapon");
-        var weaponStartPos = weapon.getPosition ();
-
-        var fireWeapon = cc.sequence (cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y), cc.hide ());
-
-        weapon.opacity = 255;
+        var fireWeapon = cc.sequence (cc.delayTime (1), cc.fadeTo (0.1, 255), cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y), cc.hide ());
         weapon.runAction (fireWeapon);
         
         if (this.batType == "Black") {
-            setTimeout(() => {
-                var warriorWorldPos = warrior.getParent ().convertToWorldSpaceAR (warrior.getPosition());
-                var warriorPos = this.node.convertToNodeSpaceAR (warriorWorldPos);
-                if (warriorPos.x < 0) {
-                    targetPoint = cc.find ("Canvas/Warrior Left Point");
-                } else {
-                    targetPoint = cc.find ("Canvas/Warrior Right Point");
-                }
-                var targetWorldPos = warrior.getParent ().convertToWorldSpaceAR (targetPoint.getPosition());
-                var targetPos = this.node.convertToNodeSpaceAR (targetWorldPos);
-                var fireWeapon = cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y);
-                    
-                var right = this.node.getChildByName ("Bat Right Weapon");
-                right.opacity = 255;
-                right.runAction (fireWeapon);
-            }, 1000);
+            var warriorPos = cc.find ("Canvas/Warrior").getPosition ();
+            if (warriorPos.x < 0) {
+                targetPoint = leftWarriorPoint;
+            } else {
+                targetPoint = rightWarriorPoint;
+            }
+            var targetPos = this._getTargetPos (targetPoint);
+            var right = this.node.getChildByName ("Bat Right Weapon");
+            var fireWeapon = cc.sequence (cc.delayTime (2), cc.fadeTo (0.1, 255), cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y));
+            right.runAction (fireWeapon);
         }
-
-        setTimeout(() => {
-            this.node.runAction (cc.fadeTo (0.3, 0));
-        }, 2000);
+            this.node.runAction (cc.sequence (cc.delayTime (3), cc.fadeTo (0.3, 0)));
     },
 
-    _getWarriorPos () {
-        
+    _getTargetPos (targetPoint) {
+        var targetPos = this.node.convertToNodeSpaceAR (cc.find ("Canvas/Warrior").getParent ().convertToWorldSpaceAR (targetPoint.getPosition ()));
+        return targetPos;
     }
 });

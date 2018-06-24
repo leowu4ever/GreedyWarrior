@@ -1807,7 +1807,8 @@
     "_isDefending": false,
     "uiController": {
       "__id__": 44
-    }
+    },
+    "_health": 3
   },
   {
     "__type__": "Spawner",
