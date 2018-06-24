@@ -67,14 +67,15 @@ cc.Class({
                 var right = this.node.getChildByName ("Bat Right Weapon");
                 right.opacity = 255;
                 right.runAction (fireWeapon);
-                cc.log ("1");
             }, 1000);
         }
 
         setTimeout(() => {
             this.node.runAction (cc.fadeTo (0.3, 0));
-            cc.log ("2");
-
         }, 2000);
     },
+
+    _getWarriorPos () {
+        
+    }
 });

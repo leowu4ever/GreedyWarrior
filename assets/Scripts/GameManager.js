@@ -10,6 +10,7 @@ cc.Class({
         _isStopped: false,
         _isDefending: false,
         uiController: cc.Node,
+        _health: 3,
     },
 
     start () {
@@ -32,6 +33,8 @@ cc.Class({
     _createEnemy () {
         this.spawner.createAChest ();
         this.spawner.createABat ("Black");
+
+        // rythme, pace, combo
     },
 
     updateScoreUI () {
@@ -63,7 +66,13 @@ cc.Class({
 
     shareGame () {
         
+    },
+
+    reduceHealth () {
+
     }
+
+    
 
 
 });
