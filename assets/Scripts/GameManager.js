@@ -17,22 +17,17 @@ cc.Class({
 
         // spawn algorithm
         this.spawner.hidePointNodes ();
-        // this.spawner.createAGhost ();
         // this.spawner.createAWizard ();
-        // this.schedule (this.createEnemy, 3);
+        this._createEnemy ();
     },
 
     update () {
         
     },
 
-    // createWave (createEnemyFunction, numOfEnemy, enemyInterval) {  
-    //     this.schedule (createEnemyFunction, enemyInterval, numOfEnemy - 1);      
-    // },
-    
     _createEnemy () {
-        this.spawner.createAChest ();
-        this.spawner.createABat ("White");
+        this.schedule (this.spawner.createAChest, 1);
+
         // rythme, pace, combo
     },
 
@@ -42,7 +37,7 @@ cc.Class({
     },
 
     stopGame () {
-        this.unschedule (this.createEnemy);
+        //this.unschedule (this._createEnemy);
         this._isStopped = true;   // for testing
         var uiControllerComp = this.uiController.getComponent ("UIController");
         uiControllerComp.showScoreUI ();
