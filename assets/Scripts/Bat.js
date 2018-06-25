@@ -12,6 +12,7 @@ cc.Class({
     },
 
     start () {
+        // start position
     },
 
     onCollisionEnter: function (other, self) {
@@ -19,7 +20,7 @@ cc.Class({
 
     moveToFirePosition () {
         var speed = 1/this.enemyProperty.speed;
-        var moveUpwards = cc.moveBy (speed, 0, cc.visibleRect.height/3);
+        var moveUpwards = cc.moveBy (speed, 0, cc.visibleRect.height/2);
         this.node.runAction (moveUpwards);
     },
 
@@ -28,44 +29,57 @@ cc.Class({
         var rightWarning = this.node.getChildByName ("Bat Right Warning");
         var leftWarriorPoint = cc.find ("Canvas/Warrior Left Point");
         var rightWarriorPoint = cc.find ("Canvas/Warrior Right Point");
+
         var warning;
         var targetPoint;
-        var warriorPos = cc.find ("Canvas/Warrior").getPosition ();
 
-        var flashWarningSeq = cc.sequence (cc.fadeTo (this.warningFadeInDuration, 255), cc.fadeTo (this.warningFadeOutDuration, 0));
-        if (warriorPos.x < 0) {
+        var flashWarning = cc.sequence (cc.fadeTo (this.warningFadeInDuration, 255), cc.fadeTo (this.warningFadeOutDuration, 0));
+        if (this._isWarriorOnLeftSide ()) {
             warning = leftWarning;
             targetPoint = leftWarriorPoint
         } else {
             warning = rightWarning;
             targetPoint = rightWarriorPoint;
         }
+
         if (this.batType == "White") {
-            warning.runAction (flashWarningSeq);
+            warning.runAction (flashWarning);
         }
 
         var targetPos = this._getTargetPos (targetPoint);
         var weapon = this.node.getChildByName ("Bat Left Weapon");
-        var fireWeapon = cc.sequence (cc.delayTime (1), cc.fadeTo (0.1, 255), cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y), cc.hide ());
+        var fireWeapon = cc.sequence (cc.delayTime (this.warningFadeInDuration + this.warningFadeOutDuration), cc.fadeTo (0.1, 255), cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y), cc.hide ());
         weapon.runAction (fireWeapon);
         
-        if (this.batType == "Black") {
-            var warriorPos = cc.find ("Canvas/Warrior").getPosition ();
-            if (warriorPos.x < 0) {
-                targetPoint = leftWarriorPoint;
-            } else {
-                targetPoint = rightWarriorPoint;
-            }
-            var targetPos = this._getTargetPos (targetPoint);
-            var right = this.node.getChildByName ("Bat Right Weapon");
-            var fireWeapon = cc.sequence (cc.delayTime (2), cc.fadeTo (0.1, 255), cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y));
-            right.runAction (fireWeapon);
-        }
-            this.node.runAction (cc.sequence (cc.delayTime (3), cc.fadeTo (0.3, 0)));
+        setTimeout(() => {
+            if (this.batType == "Black") {
+                if (this._isWarriorOnLeftSide ()) {
+                    targetPoint = leftWarriorPoint;
+                } else {
+                    targetPoint = rightWarriorPoint;
+                }
+                var targetPos = this._getTargetPos (targetPoint);
+                var right = this.node.getChildByName ("Bat Right Weapon");
+                var fireWeapon = cc.sequence (cc.fadeTo (0.1, 255), cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y));
+                right.runAction (fireWeapon);
+            }  
+        }, 2000);
+
+        this.node.runAction (cc.sequence (cc.delayTime (3), cc.fadeTo (0.3, 0)));
+
     },
 
     _getTargetPos (targetPoint) {
         var targetPos = this.node.convertToNodeSpaceAR (cc.find ("Canvas/Warrior").getParent ().convertToWorldSpaceAR (targetPoint.getPosition ()));
         return targetPos;
+    },
+
+    _isWarriorOnLeftSide () {
+        var warriorPos = cc.find ("Canvas/Warrior").getPosition ();
+        if (warriorPos.x < 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 });

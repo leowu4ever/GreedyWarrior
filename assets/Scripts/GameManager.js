@@ -31,9 +31,8 @@ cc.Class({
     // },
     
     _createEnemy () {
-        //this.spawner.createAChest ();
-        this.spawner.createABat ("Black");
-
+        this.spawner.createAChest ();
+        this.spawner.createABat ("White");
         // rythme, pace, combo
     },
 
@@ -57,22 +56,22 @@ cc.Class({
     startGame () {
         this._createEnemy ();
         this._isStopped = false;
+        this._score = 0;
     },
 
     restartGame () {
         this._createEnemy ();
         this._isStopped = false;
+        this._score = 0;
     },
 
     shareGame () {
-        
+        // call weixin api
     },
 
     reduceHealth () {
-
+        this._health--;
     }
-
-    
 
 
 });

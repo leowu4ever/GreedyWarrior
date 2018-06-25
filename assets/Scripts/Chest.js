@@ -39,11 +39,22 @@ cc.Class({
     onCollisionEnter: function (other, self) {
         var gmComp = cc.find ("Utility/Game Manager").getComponent("GameManager");
         if (other.tag == 2 && !gmComp._isStopped) {
-            gmComp.updateScoreUI();
+            gmComp.updateScoreUI ();
+            this._moveToScoreUI ();
         }
 
         if (other.tag == 1) {
-            gmComp.stopGame();
+            gmComp.stopGame ();
         }
+    },
+
+
+    _moveToScoreUI () {
+        this.node.stopAllActions ();
+        var scoreIcon = cc.find ("Canvas/Ingame UI/Score Icon");
+        var scoreIconPos = cc.find ("Canvas").convertToNodeSpaceAR (scoreIcon.getParent(). convertToWorldSpaceAR (scoreIcon.getPosition ()));
+        var moveAndShrankSpawn = cc.spawn (cc.scaleTo (1, 0.2), cc.moveTo (1, scoreIconPos.x, scoreIconPos.y));
+        this.node.runAction (moveAndShrankSpawn);  
     }
+    
 });
