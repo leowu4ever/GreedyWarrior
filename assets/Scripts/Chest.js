@@ -17,10 +17,10 @@ cc.Class({
         var warning;
         var chestSpawnPos;
         var flashWarning = cc.sequence (cc.fadeTo (this.warningFadeInDuration, 255), cc.fadeTo (this.warningFadeOutDuration, 0));
-        if (dir < 0.5) {
+        if (!dir) {
             warning = cc.find ("Canvas/Left Warning");
             chestSpawnPos = cc.find ("Canvas/Left Spawn Point");
-        } else if (dir >= 0.5) {
+        } else {
             warning = cc.find ("Canvas/Right Warning");
             chestSpawnPos = cc.find ("Canvas/Right Spawn Point");
             this.node.setScale (5, -5);
@@ -48,7 +48,6 @@ cc.Class({
             gmComp.stopGame ();
         }
     },
-
 
     _moveToScoreUI () {
         this.node.stopAllActions ();

@@ -20,6 +20,8 @@ var Spawner = cc.Class({
         warriorRightPoint: cc.Node,
         bat_white: cc.Prefab,
         bat_black: cc.Prefab,
+        chestSpawnInterval: 300, // in milisec , same side
+        comboSpawnInterval: 300, // different side
     },
     
     ctor () {
@@ -67,63 +69,102 @@ var Spawner = cc.Class({
         // while game is on
         // while (this.gm.getGameState ())
         // var waveType = Math.floor(Math.random() * 10);
-        var waveType = 0;
+        var waveType = 10;
 
+        // left -> false
         switch (waveType) {
-           case 0:
-           var dir = Math.random ();
-           this.createChestsOn  (1, dir);
-           // single left or right
+            case 0:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (1, dir, 0, !dir);
+            break;
 
-           case 1:
-           // double left or right
-           var dir = Math.random ();
-           this.createChestsOn  (2, dir);
+            case 1:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (2, dir, 0, !dir);
+            break;
 
-           case 2:
-           var dir = Math.random ();
-           this.createChestsOn  (3, dir);
-           // triple
+            case 2:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (3, dir, 0, !dir);
+            break;
 
-           case 3:
-           var dir = Math.random ();
-           this.createChestsOn  (4, dir);
-           // quadruaple
+            case 3:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (4, dir, 0, !dir);
+            break;
 
-           case 4:
-           // 1 + 1
-           var dir = Math.random ();
-           this.createChestsOn  (1, dir);
+            case 4:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (1, dir, 1, !dir);
+            break;
 
-           case 5:
-           // 1 + 2
-           case 6:
-           // 1 + 3
-           case 7:
-           // 1 + 4
-           case 8:
-           // 2 + 2
-           case 9:
-           // 2 + 3
-           case 0:
-           // 3 + 3
+            case 5:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (1, dir, 2, !dir);
+            break;
 
+            case 6:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (1, dir, 3, !dir);
+            break;
+
+            case 7:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (1, dir, 4, !dir);
+            break;
+
+            case 8:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (2, dir, 2, !dir);
+            break;
+
+            case 9:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (2, dir, 3, !dir);
+            break;
+
+            case 10:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (2, dir, 4, !dir);
+            break;
+
+            case 11:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (3, dir, 3, !dir);
+            break;
+
+            case 12:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (3, dir, 3, !dir);
+            break;
         };
     },
     
     createChestsOn (amount, dir) {
         var that = this;
         for (var i = 0; i < amount; i++) {
-            setTimeout (function () {
+            setTimeout(() => {
                 that.createAChest (dir);
-            }, 1000);
+            }, 200*i);
         }
-    }
-
-
+    },
     
 
+    createChestsOn (amount1, dir1, amount2, dir2) {
 
+        var that = this;
+        for (var i = 0; i < amount1; i++) {
+            setTimeout(() => {
+                that.createAChest (dir1);
+            }, 200*i);
+            
+            for (var j= 0; j < amount2; j++) {
+                setTimeout(() => {
+                    that.createAChest (dir2);
+                }, 200*j + this.comboSpawnInterval);
+            }
+        }
+    }
 });
 
 module.exports = {Spawner};

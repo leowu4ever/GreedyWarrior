@@ -14,10 +14,7 @@ cc.Class({
     },
 
     start () {
-
-        // spawn algorithm
         this.spawner.hidePointNodes ();
-        // this.spawner.createAWizard ();
         this._createEnemy ();
     },
 
@@ -26,7 +23,7 @@ cc.Class({
     },
 
     _createEnemy () {
-        this.schedule (function () {
+        this.scheduleOnce (function () {
             this.spawner.createChestWave ();
         }, 1)
         // rythme, pace, combo
