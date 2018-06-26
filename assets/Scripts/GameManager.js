@@ -26,8 +26,9 @@ cc.Class({
     },
 
     _createEnemy () {
-        this.schedule (this.spawner.createAChest, 1);
-
+        this.schedule (function () {
+            this.spawner.createChestWave ();
+        }, 1)
         // rythme, pace, combo
     },
 

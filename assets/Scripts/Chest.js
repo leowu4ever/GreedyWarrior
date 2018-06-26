@@ -11,9 +11,6 @@ cc.Class({
     },
 
     start () {
-        var randomDir = Math.random ();
-        this.moveUpwards (randomDir);
-        
     },
 
     moveUpwards (dir) { // 0 for left 1 for right
