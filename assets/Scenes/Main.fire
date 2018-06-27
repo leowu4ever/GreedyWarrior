@@ -1657,7 +1657,9 @@
       "__uuid__": "75f798a4-4915-45ca-a134-b054a040533b"
     },
     "chestSpawnInterval": 300,
-    "comboSpawnInterval": 300
+    "waveSpawnInterval": 300,
+    "firstLevelScore": 30,
+    "secondLevelScore": 50
   },
   {
     "__type__": "Wave",

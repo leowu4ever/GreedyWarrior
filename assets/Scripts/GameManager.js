@@ -15,18 +15,16 @@ cc.Class({
 
     start () {
         this.spawner.hidePointNodes ();
-        this._createEnemy ();
     },
 
     update () {
         
     },
 
-    _createEnemy () {
-        this.scheduleOnce (function () {
+    _createEnemies () {
+        this.schedule (function () {
             this.spawner.createChestWave ();
-        }, 1)
-        // rythme, pace, combo
+        }, 2)
     },
 
     updateScoreUI () {
@@ -35,25 +33,24 @@ cc.Class({
     },
 
     stopGame () {
-        //this.unschedule (this._createEnemy);
+        this.unschedule (this._createEnemies);
         this._isStopped = true;   // for testing
         var uiControllerComp = this.uiController.getComponent ("UIController");
         uiControllerComp.showScoreUI ();
     },
-
 
     getGameState () {
         return this._isStopped;
     },
 
     startGame () {
-        this._createEnemy ();
+        this._createEnemies ();
         this._isStopped = false;
         this._score = 0;
     },
 
     restartGame () {
-        this._createEnemy ();
+        this._createEnemies ();
         this._isStopped = false;
         this._score = 0;
     },
@@ -64,7 +61,9 @@ cc.Class({
 
     reduceHealth () {
         this._health--;
+    },
+
+    getScore () {
+        return this._score;
     }
-
-
 });

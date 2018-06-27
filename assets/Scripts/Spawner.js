@@ -21,7 +21,9 @@ var Spawner = cc.Class({
         bat_white: cc.Prefab,
         bat_black: cc.Prefab,
         chestSpawnInterval: 300, // in milisec , same side
-        comboSpawnInterval: 300, // different side
+        waveSpawnInterval: 300, // different side
+        firstLevelScore: 30,
+        secondLevelScore: 50,
     },
     
     ctor () {
@@ -68,87 +70,85 @@ var Spawner = cc.Class({
     createChestWave () {
         // while game is on
         // while (this.gm.getGameState ())
-        // var waveType = Math.floor(Math.random() * 10);
-        var waveType = 10;
+            var gmComp = cc.find ("Utility/Game Manager").getComponent ("GameManager");
+            var score = gmComp.getScore ();
+            var waveType;
+            
+            if (score >= 0 && score < this.firstLevelScore) {
+                waveType = this.getARandomIntBetween (0, 3);
+            } else if (score >= this.firstLevelScore && score < this.secondLevelScore) {
+                waveType = this.getARandomIntBetween (4, 7);
+            } else if (score >= this.secondLevelScore) {
+                waveType = this.getARandomIntBetween (8, 12);
+            }
+            cc.log ("case " + waveType)
+            switch (waveType) {
+                case 0:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (1, dir, 0, !dir);
+                break;
 
-        // left -> false
-        switch (waveType) {
-            case 0:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (1, dir, 0, !dir);
-            break;
+                case 1:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (2, dir, 0, !dir);
+                break;
 
-            case 1:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (2, dir, 0, !dir);
-            break;
+                case 2:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (3, dir, 0, !dir);
+                break;
 
-            case 2:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (3, dir, 0, !dir);
-            break;
+                case 3:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (4, dir, 0, !dir);
+                break;
 
-            case 3:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (4, dir, 0, !dir);
-            break;
+                case 4:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (1, dir, 1, !dir);
+                break;
 
-            case 4:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (1, dir, 1, !dir);
-            break;
+                case 5:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (1, dir, 2, !dir);
+                break;
 
-            case 5:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (1, dir, 2, !dir);
-            break;
+                case 6:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (1, dir, 3, !dir);
+                break;
 
-            case 6:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (1, dir, 3, !dir);
-            break;
+                case 7:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (1, dir, 4, !dir);
+                break;
 
-            case 7:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (1, dir, 4, !dir);
-            break;
+                case 8:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (2, dir, 2, !dir);
+                break;
 
-            case 8:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (2, dir, 2, !dir);
-            break;
+                case 9:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (2, dir, 3, !dir);
+                break;
 
-            case 9:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (2, dir, 3, !dir);
-            break;
+                case 10:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (2, dir, 4, !dir);
+                break;
 
-            case 10:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (2, dir, 4, !dir);
-            break;
+                case 11:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (3, dir, 3, !dir);
+                break;
 
-            case 11:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (3, dir, 3, !dir);
-            break;
-
-            case 12:
-            var dir = Math.random () >= 0.5;
-            this.createChestsOn (3, dir, 3, !dir);
-            break;
-        };
+                case 12:
+                var dir = Math.random () >= 0.5;
+                this.createChestsOn (3, dir, 4, !dir);
+                break;
+            };
     },
-    
-    createChestsOn (amount, dir) {
-        var that = this;
-        for (var i = 0; i < amount; i++) {
-            setTimeout(() => {
-                that.createAChest (dir);
-            }, 200*i);
-        }
-    },
-    
 
     createChestsOn (amount1, dir1, amount2, dir2) {
 
@@ -158,12 +158,16 @@ var Spawner = cc.Class({
                 that.createAChest (dir1);
             }, 200*i);
             
-            for (var j= 0; j < amount2; j++) {
+            for (var j = 0; j < amount2; j++) {
                 setTimeout(() => {
                     that.createAChest (dir2);
-                }, 200*j + this.comboSpawnInterval);
+                }, 200 * j + this.waveSpawnInterval);
             }
         }
+    },
+
+    getARandomIntBetween (min, max) {
+        return Math.floor( Math.random () * (max-min+1) + min);
     }
 });
 
