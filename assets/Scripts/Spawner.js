@@ -150,6 +150,12 @@ var Spawner = cc.Class({
                 break;
             };
 
+            
+            if (waveType >= 1 && waveType <= 3) {
+                this.createAGhost ();
+            }
+
+
             if (waveType >= 4 && waveType <= 7) {
                 this.createABat ('White');
             }
