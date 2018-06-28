@@ -81,6 +81,7 @@ var Spawner = cc.Class({
             } else if (score >= this.secondLevelScore) {
                 waveType = this.getARandomIntBetween (8, 12);
             }
+
             cc.log ("case " + waveType)
             switch (waveType) {
                 case 0:
@@ -148,6 +149,14 @@ var Spawner = cc.Class({
                 this.createChestsOn (3, dir, 4, !dir);
                 break;
             };
+
+            if (waveType >= 4 && waveType <= 7) {
+                this.createABat ('White');
+            }
+
+            if (waveType >= 8) {
+                this.createAGhost ();
+            }
     },
 
     createChestsOn (amount1, dir1, amount2, dir2) {

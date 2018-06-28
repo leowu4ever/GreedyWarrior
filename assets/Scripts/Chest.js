@@ -39,12 +39,12 @@ cc.Class({
     onCollisionEnter: function (other, self) {
         var gmComp = cc.find ("Utility/Game Manager").getComponent("GameManager");
         if (other.tag == 2 && !gmComp._isStopped) {
-            gmComp.updateScoreUI ();
+            gmComp.addScore ();
             this._moveToScoreUI ();
             this._isCollected = true;
         }
 
-        if (other.tag == 1 && !this._isCollected) {
+        if (other.tag == 1 && !this._isCollected && !gmComp._isStopped) {
             gmComp.stopGame ();
         }
     },

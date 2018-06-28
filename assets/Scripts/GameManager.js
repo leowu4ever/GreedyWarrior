@@ -22,21 +22,31 @@ cc.Class({
     },
 
     _createEnemies () {
-        this.schedule (function () {
-            this.spawner.createChestWave ();
-        }, 2)
+        this.createChestWave = function () {
+            if (this.getGameState ()) {
+                this.unschedule (this.createChestWave);
+            }
+            this.spawner.createABat ("Black");
+        }
+        this.schedule (this.createChestWave, 2);
+    },
+    
+    resetScore () {
+        this._score = 0;
+        this.scoreLabel.getComponent (cc.Label).string = this._score;
     },
 
-    updateScoreUI () {
+
+    addScore () {
         this._score++;
         this.scoreLabel.getComponent (cc.Label).string = this._score;
     },
 
     stopGame () {
-        this.unschedule (this._createEnemies);
         this._isStopped = true;   // for testing
         var uiControllerComp = this.uiController.getComponent ("UIController");
         uiControllerComp.showScoreUI ();
+        cc.log ("stop");
     },
 
     getGameState () {
@@ -46,13 +56,13 @@ cc.Class({
     startGame () {
         this._createEnemies ();
         this._isStopped = false;
-        this._score = 0;
+        this.resetScore ();
     },
 
     restartGame () {
         this._createEnemies ();
         this._isStopped = false;
-        this._score = 0;
+        this.resetScore ();
     },
 
     shareGame () {
