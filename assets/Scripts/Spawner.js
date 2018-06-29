@@ -54,7 +54,6 @@ var Spawner = cc.Class({
         for (var i = 0; i < this._chestPoolSize; i++) {
             let chest = cc.instantiate (this.chestPrefab);  
             this._chestPool.put (chest);
-            cc.log (i);
         }    
 
         // init white/black bat
@@ -69,21 +68,28 @@ var Spawner = cc.Class({
     },
 
     createChest (dir) {
-        // get chest object 
-        // set parent
-        // move upwards
-        cc.log ("called");
         var chest = null;
         if (this._chestPool.size () > 0) {
-            chest = this._chestPool.get ();
+            chest = this._chestPool.get (dir);
         } else {
             chest = cc.instantiate (this.chestPrefab);
         }
-        chest.parent = this.canvas,
-        //chest.opacity = 0;
-        chest.getComponent ("Chest").moveUpwards (dir); 
+        chest.parent = this.canvas;
     },
-    
+
+    createWarrior () {
+
+
+    },
+    createBat (color) {
+        // set active here
+        // 
+
+    },
+    createGhost () {
+        // set active here
+        
+    },
 
     hidePointNodes () {
         this.leftSpawnPoint.opacity = 0;
@@ -222,7 +228,6 @@ var Spawner = cc.Class({
     },
 
     createChestsOn (amount1, dir1, amount2, dir2) {
-
         var that = this;
         for (var i = 0; i < amount1; i++) {
             setTimeout(() => {

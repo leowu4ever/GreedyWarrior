@@ -20,10 +20,13 @@ cc.Class({
         if (!dir) {
             warning = cc.find ("Canvas/Left Warning");
             chestSpawnPos = cc.find ("Canvas/Left Spawn Point");
+
+            cc.log ("1");
         } else {
             warning = cc.find ("Canvas/Right Warning");
             chestSpawnPos = cc.find ("Canvas/Right Spawn Point");
             this.node.setScale (5, -5);
+            cc.log ("2");
 
         }
         this.node.setPosition (chestSpawnPos);
@@ -57,12 +60,14 @@ cc.Class({
         this.node.runAction (moveAndShrankSpawn);  
     },  
 
-    reuse () {
-        cc.log ("reuse");
+    reuse (dir) {
+        // call when get ()
+        this.moveUpwards (dir);
     },
 
     unuse () {
-        cc.log ("unuse");
+        // call when put ()
+        // move back TO-DO
     }
 
 });

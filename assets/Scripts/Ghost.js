@@ -32,4 +32,6 @@ cc.Class({
             warriorComp.showNormalWarrior ();
         }, this.invertTime * 1000);
     }
+
+    
 });

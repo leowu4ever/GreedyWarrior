@@ -86,7 +86,8 @@ cc.Class({
             }  
         }, 2000);
 
-        this.node.runAction (cc.sequence (cc.delayTime (3), cc.fadeTo (0.3, 0)));
+        this.node.runAction (cc.sequence (cc.delayTime (3), cc.fadeTo (0.3, 0)));   // set active no here TO-DO
+
 
     },
 

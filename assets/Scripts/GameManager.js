@@ -18,6 +18,9 @@ cc.Class({
     start () {
         // this.spawner.hidePointNodes ();
         // this.spawner.createChest (false);
+
+        this.spawner.getComponent ("Spawner").createAGhost ();
+
     },
 
     update () {
@@ -25,16 +28,13 @@ cc.Class({
     },
 
     _createEnemies () {
-        // this.createChestWave = function () {
-        //     if (this.getGameState ()) {
-        //         this.unschedule (this.createChestWave);
-        //     }
-        //     this.spawner.createChestWave ();
-        // }
-        // this.schedule (this.createChestWave, 2);
-        
-        this.spawner.getComponent ("Spawner").createChest (false);
-
+        this.createChestWave = function () {
+            if (this.getGameState ()) {
+                this.unschedule (this.createChestWave);
+            }
+            this.spawner.getComponent ("Spawner").createChest (true);
+        }
+        this.schedule (this.createChestWave, 2);
     },
     
     resetScore () {

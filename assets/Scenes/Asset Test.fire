@@ -1315,15 +1315,15 @@
       "__id__": 33
     },
     "_enabled": true,
-    "spawner": {
-      "__id__": 35
-    },
     "scoreLabel": null,
     "_score": 0,
     "_isStopped": false,
     "_isDefending": false,
     "uiController": null,
-    "_health": 3
+    "_health": 3,
+    "spawner": {
+      "__id__": 35
+    }
   },
   {
     "__type__": "Spawner",
