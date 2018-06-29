@@ -13,7 +13,7 @@ cc.Class({
     start () {
     },
 
-    moveUpwards (dir) { // 0 for left 1 for right
+    moveUpwards (dir) {
         var warning;
         var chestSpawnPos;
         var flashWarning = cc.sequence (cc.fadeTo (this.warningFadeInDuration, 255), cc.fadeTo (this.warningFadeOutDuration, 0));
@@ -55,8 +55,14 @@ cc.Class({
         var scoreIconPos = cc.find ("Canvas").convertToNodeSpaceAR (scoreIcon.getParent(). convertToWorldSpaceAR (scoreIcon.getPosition ()));
         var moveAndShrankSpawn = cc.spawn (cc.scaleTo (1, 0.2), cc.moveTo (1, scoreIconPos.x, scoreIconPos.y));
         this.node.runAction (moveAndShrankSpawn);  
-    }  
+    },  
 
+    reuse () {
+        cc.log ("reuse");
+    },
 
-    
+    unuse () {
+        cc.log ("unuse");
+    }
+
 });

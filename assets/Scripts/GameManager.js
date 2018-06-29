@@ -1,20 +1,23 @@
-const Spawner = require('Spawner').Spawner;
+//const Spawner = require('Spawner').Spawner;
 
 cc.Class({
     extends: cc.Component,
 
     properties: {
-        spawner: Spawner,
+        //spawner: Spawner,
         scoreLabel: cc.Node,
         _score: 0,
         _isStopped: false,
         _isDefending: false,
         uiController: cc.Node,
         _health: 3,
+
+        spawner: cc.Node,
     },
 
     start () {
-        this.spawner.hidePointNodes ();
+        // this.spawner.hidePointNodes ();
+        // this.spawner.createChest (false);
     },
 
     update () {
@@ -22,13 +25,16 @@ cc.Class({
     },
 
     _createEnemies () {
-        this.createChestWave = function () {
-            if (this.getGameState ()) {
-                this.unschedule (this.createChestWave);
-            }
-            this.spawner.createChestWave ();
-        }
-        this.schedule (this.createChestWave, 2);
+        // this.createChestWave = function () {
+        //     if (this.getGameState ()) {
+        //         this.unschedule (this.createChestWave);
+        //     }
+        //     this.spawner.createChestWave ();
+        // }
+        // this.schedule (this.createChestWave, 2);
+        
+        this.spawner.getComponent ("Spawner").createChest (false);
+
     },
     
     resetScore () {

@@ -2,7 +2,9 @@ const Wave = require('Wave').Wave;
 // need to require enemy script
 
 var Spawner = cc.Class({
-    name: 'Spawner',
+
+    extends: cc.Component,
+
     properties: {
         chest: cc.Prefab,
         ghost: cc.Prefab,
@@ -24,10 +26,64 @@ var Spawner = cc.Class({
         waveSpawnInterval: 300, // different side
         firstLevelScore: 30,
         secondLevelScore: 50,
+        
+        // for spawning
+        _chestPool: cc.Nodepool,
+        _chestPoolSize: 20,
+        _batWhite: cc.Node,
+        _batBlack: cc.Node,
+        _ghost: cc.Node,
+        _warrior: cc.Node,
+        
+        // prefabs for instantiation
+        chestPrefab: cc.Prefab,
+        batWhitePrefab: cc.Prefab,
+        batBlackPrefab: cc.Prefab,
+        ghostPrefab: cc.Prefab,
+        warriorPrefab: cc.Prefab,
     },
     
-    ctor () {
+    onLoad () {
+        this.initNodes ();
+        cc.log ("load");
     },
+
+    initNodes () {
+        // init chest pool
+        this._chestPool = new cc.NodePool ("Chest");
+        for (var i = 0; i < this._chestPoolSize; i++) {
+            let chest = cc.instantiate (this.chestPrefab);  
+            this._chestPool.put (chest);
+            cc.log (i);
+        }    
+
+        // init white/black bat
+        this._batWhite = cc.instantiate (this.batWhitePrefab);    
+        this._batblack = cc.instantiate (this.batBlackPrefab);
+
+        // init ghost 
+        this._ghost = cc.instantiate (this.ghostPrefab);
+
+        // init warrior
+        this._warrior = cc.instantiate (this.warriorPrefab);
+    },
+
+    createChest (dir) {
+        // get chest object 
+        // set parent
+        // move upwards
+        cc.log ("called");
+        var chest = null;
+        if (this._chestPool.size () > 0) {
+            chest = this._chestPool.get ();
+        } else {
+            chest = cc.instantiate (this.chestPrefab);
+        }
+        chest.parent = this.canvas,
+        //chest.opacity = 0;
+        chest.getComponent ("Chest").moveUpwards (dir); 
+    },
+    
 
     hidePointNodes () {
         this.leftSpawnPoint.opacity = 0;
