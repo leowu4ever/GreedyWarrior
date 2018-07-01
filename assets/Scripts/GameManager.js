@@ -11,20 +11,16 @@ cc.Class({
         _isDefending: false,
         uiController: cc.Node,
         _health: 3,
-
         spawner: cc.Node,
     },
 
     start () {
         // this.spawner.hidePointNodes ();
         // this.spawner.createChest (false);
-
-        this.spawner.getComponent ("Spawner").createAGhost ();
-
+        // this.spawner.getComponent ("Spawner").createAGhost ();
     },
 
     update () {
-        
     },
 
     _createEnemies () {
@@ -32,9 +28,9 @@ cc.Class({
             if (this.getGameState ()) {
                 this.unschedule (this.createChestWave);
             }
-            this.spawner.getComponent ("Spawner").createChest (true);
+            this.spawner.getComponent ("Spawner").createChestWave ();
         }
-        this.schedule (this.createChestWave, 2);
+        this.schedule (this.createChestWave, 3);
     },
     
     resetScore () {
@@ -53,6 +49,8 @@ cc.Class({
         var uiControllerComp = this.uiController.getComponent ("UIController");
         uiControllerComp.showScoreUI ();
         cc.log ("stop");
+        // spawner stop chest actions
+
     },
 
     getGameState () {
@@ -69,6 +67,8 @@ cc.Class({
         this._createEnemies ();
         this._isStopped = false;
         this.resetScore ();
+        this.spawner.getComponent ("Spawner").initNodes ();
+
     },
 
     shareGame () {

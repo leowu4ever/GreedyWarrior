@@ -63,6 +63,9 @@
       },
       {
         "__id__": 66
+      },
+      {
+        "__id__": 68
       }
     ],
     "_tag": -1,
@@ -2249,6 +2252,39 @@
       "__uuid__": "88dad6f7-2aa9-4cf5-9fd7-81bd5c919662"
     },
     "fileId": "bfXdmsdi5LirRZ6v/4KyA3",
+    "sync": true
+  },
+  {
+    "__type__": "cc.Node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_id": "32Tj+7bFpBSaph3fTzRHtx",
+    "_prefab": {
+      "__id__": 69
+    },
+    "_name": "Chest",
+    "_active": true,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": -243.1,
+      "y": -510.6
+    },
+    "_rotationX": 90,
+    "_rotationY": 90,
+    "_localZOrder": 0,
+    "_globalZOrder": 0
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 68
+    },
+    "asset": {
+      "__uuid__": "7454a564-84be-47ce-97ee-feaf51b166de"
+    },
+    "fileId": "c7Fi0x+SpPhrW2ZobheP8h",
     "sync": true
   }
 ]

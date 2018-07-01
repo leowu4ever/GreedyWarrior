@@ -19,7 +19,6 @@ cc.Class({
     },
 
     onCollisionEnter: function (other, self) {
-        cc.log ("hitted by an enemy");
     },
 
     showShield () {

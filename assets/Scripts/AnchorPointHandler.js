@@ -12,8 +12,8 @@ cc.Class({
     
 
     onLoad () {
-        this.adjustAnchorPoint ();
-        //this.hideAnchorPoint ();
+        // this.adjustAnchorPoint ();
+        this.hideAnchorPoint ();
     },
 
     start () {
@@ -23,11 +23,8 @@ cc.Class({
 
     adjustAnchorPoint () {
         // chest - Preset using widget
-
         // warning - Preset using widget
-
         // warrior
-
     },
 
     hideAnchorPoint () {
@@ -41,25 +38,25 @@ cc.Class({
 
     // a set of getter methods
     getLeftChestPoint () {
-        return this.leftChestPoint.getPosition ();
+        return this.leftChestPoint;
     }, 
     getRightChestPoint () {
-        return this.rightChestPoint.getPosition ();
+        return this.rightChestPoint;
 
     }, 
     getLeftWarningPoint () {
-        return this.leftWarningPoint.getPosition ();
+        return this.leftWarningPoint;
 
     }, 
     getRightWarningPoint () {
-        return this.rightWarningPoint.getPosition ();
+        return this.rightWarningPoint;
 
     }, 
     getWarriorLeftPoint () {
-        return this.warriorLeftPoint.getPosition ();
+        return this.warriorLeftPoint;
 
     }, 
     getWarriorRightPoint () {
-        return this.warriorRightPoint.getPosition ();
+        return this.warriorRightPoint;
     }, 
 });

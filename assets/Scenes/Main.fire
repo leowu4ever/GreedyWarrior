@@ -707,7 +707,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": -347.5,
-      "y": -739.5
+      "y": -789.5
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -756,7 +756,7 @@
     "_left": -12.5,
     "_right": 0,
     "_top": 0,
-    "_bottom": -100,
+    "_bottom": -150,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -814,7 +814,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 347.5,
-      "y": -739.5
+      "y": -789.5
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -863,7 +863,7 @@
     "_left": 682.5,
     "_right": -12.5,
     "_top": 0,
-    "_bottom": -100,
+    "_bottom": -150,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -1958,25 +1958,13 @@
     "waveSpawnInterval": 300,
     "firstLevelScore": 30,
     "secondLevelScore": 50,
-    "_chestPoolSize": 20,
+    "_chestPoolSize": 3,
     "_batWhite": null,
     "_batBlack": null,
     "_ghost": null,
     "_warrior": null,
     "chestPrefab": {
       "__uuid__": "7454a564-84be-47ce-97ee-feaf51b166de"
-    },
-    "batWhitePrefab": {
-      "__uuid__": "c8218636-33c6-4a97-a743-eec76b5b3947"
-    },
-    "batBlackPrefab": {
-      "__uuid__": "88dad6f7-2aa9-4cf5-9fd7-81bd5c919662"
-    },
-    "ghostPrefab": {
-      "__uuid__": "00ca5789-3592-4d63-a1cd-4c389e5af450"
-    },
-    "warriorPrefab": {
-      "__uuid__": "d373926c-5c80-4223-926b-9a53bc42628a"
     }
   },
   {

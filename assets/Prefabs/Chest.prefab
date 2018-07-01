@@ -79,7 +79,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 3
@@ -140,9 +140,9 @@
     "_dstBlendFactor": 771,
     "playOnLoad": true,
     "_autoRemoveOnFinish": false,
-    "_totalParticles": 150,
+    "_totalParticles": 100,
     "_duration": -1,
-    "_emissionRate": 5,
+    "_emissionRate": 10,
     "_life": 0.3,
     "_lifeVar": 0,
     "_startColor": {
@@ -175,10 +175,10 @@
     },
     "_angle": 0,
     "_angleVar": 0,
-    "_startSize": 3,
-    "_startSizeVar": 0,
-    "_endSize": 5,
-    "_endSizeVar": 0,
+    "_startSize": 2,
+    "_startSizeVar": 3,
+    "_endSize": 4,
+    "_endSizeVar": 6,
     "_startSpin": 0,
     "_startSpinVar": 0,
     "_endSpin": 0,
@@ -282,7 +282,10 @@
     "_enabled": true,
     "enemyProperty": {
       "__id__": 8
-    }
+    },
+    "warningFadeInDuration": 0.3,
+    "warningFadeOutDuration": 0.1,
+    "_isCollected": false
   },
   {
     "__type__": "Enemy",

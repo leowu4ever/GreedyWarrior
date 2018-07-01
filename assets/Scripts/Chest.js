@@ -14,32 +14,32 @@ cc.Class({
     },
 
     moveUpwards (dir) {
+        this._isCollected = false;
+        cc.log ("move");
+        var anchorPointHandlerComp = cc.find ("Utility/Anchor Point Handler").getComponent ("AnchorPointHandler");
         var warning;
-        var chestSpawnPos;
-        var flashWarning = cc.sequence (cc.fadeTo (this.warningFadeInDuration, 255), cc.fadeTo (this.warningFadeOutDuration, 0));
+        var chestSpawnPoint;
         if (!dir) {
-            warning = cc.find ("Canvas/Left Warning");
-            chestSpawnPos = cc.find ("Canvas/Left Spawn Point");
-
-            cc.log ("1");
+            warning = anchorPointHandlerComp.getLeftWarningPoint ();
+            chestSpawnPoint = anchorPointHandlerComp.getLeftChestPoint ();
+            this.node.setScale (cc.v2 (5,5));
         } else {
-            warning = cc.find ("Canvas/Right Warning");
-            chestSpawnPos = cc.find ("Canvas/Right Spawn Point");
-            this.node.setScale (5, -5);
-            cc.log ("2");
-
+            warning = anchorPointHandlerComp.getRightWarningPoint ();
+            chestSpawnPoint = anchorPointHandlerComp.getRightChestPoint ();
+            this.node.setScale (cc.v2 (5,-5));
         }
-        this.node.setPosition (chestSpawnPos);
+
+        this.node.setPosition (chestSpawnPoint.getPosition ());
         this.node.opacity = 255;
-        warning.runAction (flashWarning);
-        setTimeout(() => {
-            var moveUpwards = cc.sequence (cc.delayTime (1), cc.moveBy (1/this.enemyProperty.speed, 0, cc.visibleRect.height*2)); 
-            this.node.runAction (moveUpwards);    
-        }, (this.warningFadeInDuration + this.warningFadeOutDuration) * 1000);
-
+        var flashWarningSeq = cc.sequence (cc.fadeTo (this.warningFadeInDuration, 255), cc.fadeTo (this.warningFadeOutDuration, 0));
+        warning.runAction (flashWarningSeq);
+        
+        // after warning, move up, place at origion
+        var moveUpwards = cc.sequence (cc.delayTime (this.warningFadeInDuration + this.warningFadeOutDuration), cc.moveBy (1/this.enemyProperty.speed, 0, cc.visibleRect.height*2)); 
+        this.node.runAction (moveUpwards);    
     },
-
-    onCollisionEnter: function (other, self) {
+ 
+    onCollisionEnter (other, self) {
         var gmComp = cc.find ("Utility/Game Manager").getComponent("GameManager");
         if (other.tag == 2 && !gmComp._isStopped) {
             gmComp.addScore ();
@@ -56,18 +56,25 @@ cc.Class({
         this.node.stopAllActions ();
         var scoreIcon = cc.find ("Canvas/Ingame UI/Score Icon");
         var scoreIconPos = cc.find ("Canvas").convertToNodeSpaceAR (scoreIcon.getParent(). convertToWorldSpaceAR (scoreIcon.getPosition ()));
-        var moveAndShrankSpawn = cc.spawn (cc.scaleTo (1, 0.2), cc.moveTo (1, scoreIconPos.x, scoreIconPos.y));
+        // call back function
+        var that = this;
+        var recycleCallback = function () {
+            //this.node.opacity = 0;
+            cc.find ("Utility/Spawner").getComponent ("Spawner").recycleChest (this.node);
+            cc.log ("recycle");
+            cc.log (that.node.getPosition ());
+        }
+        var moveAndShrankSpawn = cc.sequence (cc.spawn (cc.moveTo (1, scoreIconPos.x, scoreIconPos.y), cc.scaleTo (1, 0)), cc.callFunc (recycleCallback, this));
         this.node.runAction (moveAndShrankSpawn);  
-    },  
-
-    reuse (dir) {
-        // call when get ()
-        this.moveUpwards (dir);
     },
 
-    unuse () {
-        // call when put ()
-        // move back TO-DO
-    }
+    stopAction () {
+        this.node.stopAllActions ();
+    },
+
+    resetPosition () {
+        var anchorPointHandlerComp = cc.find ("Utility/Anchor Point Handler").getComponent ("AnchorPointHandler");
+        this.node.setPosition (anchorPointHandlerComp.getLeftChestPoint ().getPosition ());
+    },
 
 });

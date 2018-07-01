@@ -37,83 +37,58 @@ var Spawner = cc.Class({
         
         // prefabs for instantiation
         chestPrefab: cc.Prefab,
-        batWhitePrefab: cc.Prefab,
-        batBlackPrefab: cc.Prefab,
-        ghostPrefab: cc.Prefab,
-        warriorPrefab: cc.Prefab,
     },
     
     onLoad () {
         this.initNodes ();
-        cc.log ("load");
     },
 
     initNodes () {
         // init chest pool
-        this._chestPool = new cc.NodePool ("Chest");
+        this._chestPool = new cc.NodePool ();
         for (var i = 0; i < this._chestPoolSize; i++) {
             let chest = cc.instantiate (this.chestPrefab);  
             this._chestPool.put (chest);
         }    
-
-        // init white/black bat
-        this._batWhite = cc.instantiate (this.batWhitePrefab);    
-        this._batblack = cc.instantiate (this.batBlackPrefab);
-
-        // init ghost 
-        this._ghost = cc.instantiate (this.ghostPrefab);
-
-        // init warrior
-        this._warrior = cc.instantiate (this.warriorPrefab);
     },
 
     createChest (dir) {
+        console.clear ();
+        cc.log ("chest size" + this._chestPool.size ());
         var chest = null;
         if (this._chestPool.size () > 0) {
             chest = this._chestPool.get (dir);
+            cc.log ("pool");
+
         } else {
             chest = cc.instantiate (this.chestPrefab);
+            cc.log ("ins");
         }
         chest.parent = this.canvas;
-    },
-
-    createWarrior () {
-
-
-    },
-    createBat (color) {
-        // set active here
-        // 
-
-    },
-    createGhost () {
-        // set active here
-        
-    },
-
-    hidePointNodes () {
-        this.leftSpawnPoint.opacity = 0;
-        this.rightSpawnPoint.opacity = 0;
-        this.leftWarning.opacity = 0;
-        this.rightWarning.opacity = 0;
-        this.warriorLeftPoint.opacity = 0;
-        this.warriorRightPoint.opacity = 0;
-    },
-
-    createAChest (dir) {
-        var chest = cc.instantiate (this.chest);    // dont keep instantiate            
-        chest.parent = this.canvas;
-        chest.opacity = 0;
+        //chest.getComponent ("Chest").resetPosition ();
         chest.getComponent ("Chest").moveUpwards (dir);
     },
 
-    createAWizard () {
-        var wizardGroup = cc.instantiate (this.wizard);
-        wizardGroup.parent = this.canvas;
-        wizardGroup.setPosition (this.leftWarning); 
+    recycleChest (chest) {
+        this._chestPool.put (chest);
     },
 
-    createABat (batType) {
+    createWarrior () {
+        // TO-DO
+    },
+
+    createGhost () {
+        // set active here
+        // TO-DO
+    },
+
+    createAWizard () {
+
+        wizardGroup.setPosition (this.leftWarning); 
+        // TO-DO
+    },
+
+    createBat (batType) {
         var batGroup;
         if (batType == "White") {
             batGroup = cc.instantiate (this.bat_white);
@@ -122,11 +97,6 @@ var Spawner = cc.Class({
         }
         batGroup.parent =  this.canvas;
         batGroup.setPosition (cc.v2 (0, this.leftSpawnPoint.y));
-    },
-
-    createAGhost () {
-        var ghostGroup = cc.instantiate (this.ghost);
-        ghostGroup.parent = this.canvas;
     },
 
     createChestWave () {
@@ -211,32 +181,36 @@ var Spawner = cc.Class({
                 this.createChestsOn (3, dir, 4, !dir);
                 break;
             };
-
             
-            if (waveType >= 1 && waveType <= 3) {
-                this.createAGhost ();
-            }
+            // if (waveType >= 1 && waveType <= 3) {
+            //     this.createAGhost ();
+            // }
 
 
-            if (waveType >= 4 && waveType <= 7) {
-                this.createABat ('White');
-            }
+            // if (waveType >= 4 && waveType <= 7) {
+            //     this.createABat ('White');
+            // }
 
-            if (waveType >= 8) {
-                this.createAGhost ();
-            }
+            // if (waveType >= 8) {
+            //     this.createAGhost ();
+            // }
+    },
+
+    stopChestWave () {
+        // get active node in a list
+
     },
 
     createChestsOn (amount1, dir1, amount2, dir2) {
         var that = this;
         for (var i = 0; i < amount1; i++) {
             setTimeout(() => {
-                that.createAChest (dir1);
+                that.createChest (dir1);
             }, 200*i);
             
             for (var j = 0; j < amount2; j++) {
                 setTimeout(() => {
-                    that.createAChest (dir2);
+                    that.createChest (dir2);
                 }, 200 * j + this.waveSpawnInterval);
             }
         }
