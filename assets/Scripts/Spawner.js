@@ -9,7 +9,7 @@ var Spawner = cc.Class({
 
         chestSpawnInterval: 300, // in milisec , same side
         waveSpawnInterval: 300, // different side
-        firstLevelScore: 30,   // trigger to second level
+        firstLevelScore: 20,   // trigger to second level
         secondLevelScore: 50,
         
         // for spawning
@@ -91,9 +91,6 @@ var Spawner = cc.Class({
                 this.bat_black.opacity = 255;        
             }, 10);
         }
-
-
-
     },
 
     createChestWave () {
@@ -103,6 +100,7 @@ var Spawner = cc.Class({
             var score = gmComp.getScore ();
             var waveType;
             
+            // for chest wave
             if (score >= 0 && score < this.firstLevelScore) {
                 waveType = this.getARandomIntBetween (0, 3);
             } else if (score >= this.firstLevelScore && score < this.secondLevelScore) {
@@ -178,6 +176,7 @@ var Spawner = cc.Class({
                 this.createChestsOn (3, dir, 4, !dir);
                 break;
             };
+            
             
             // if (waveType >= 1 && waveType <= 3) {
             //     this.createAGhost ();
