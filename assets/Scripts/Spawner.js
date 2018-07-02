@@ -6,34 +6,21 @@ var Spawner = cc.Class({
     extends: cc.Component,
 
     properties: {
-        chest: cc.Prefab,
-        ghost: cc.Prefab,
-        wizard: cc.Prefab,
-        canvas: cc.Node,
-        bat: [cc.Prefab],
-        warrior: cc.Node,
-        wave: [Wave],   // enemy,numOfEnemy,enemyInterval,waveDelay
-        leftSpawnPoint: cc.Node,
-        rightSpawnPoint: cc.Node,
-        leftWarning: cc.Node,
-        rightWarning: cc.Node,
-        chestShowUpDelay: 0.3,
-        warriorLeftPoint: cc.Node,
-        warriorRightPoint: cc.Node,
-        bat_white: cc.Prefab,
-        bat_black: cc.Prefab,
+
         chestSpawnInterval: 300, // in milisec , same side
         waveSpawnInterval: 300, // different side
-        firstLevelScore: 30,
+        firstLevelScore: 30,   // trigger to second level
         secondLevelScore: 50,
         
         // for spawning
         _chestPool: cc.Nodepool,
         _chestPoolSize: 20,
-        _batWhite: cc.Node,
-        _batBlack: cc.Node,
-        _ghost: cc.Node,
-        _warrior: cc.Node,
+
+        ghost: cc.Node,
+        canvas: cc.Node,
+        warrior: cc.Node,
+        bat_white: cc.Node,
+        bat_black: cc.Node,
         
         // prefabs for instantiation
         chestPrefab: cc.Prefab,
@@ -65,7 +52,6 @@ var Spawner = cc.Class({
             cc.log ("ins");
         }
         chest.parent = this.canvas;
-        //chest.getComponent ("Chest").resetPosition ();
         chest.getComponent ("Chest").moveUpwards (dir);
     },
 
@@ -78,25 +64,37 @@ var Spawner = cc.Class({
     },
 
     createGhost () {
-        // set active here
-        // TO-DO
-    },
-
-    createAWizard () {
-
-        wizardGroup.setPosition (this.leftWarning); 
-        // TO-DO
+        this.ghost.active = true;
+        var animationComp = this.ghost.getComponent (cc.Animation);
+        animationComp.play ("Ghost");
+        setTimeout(() => {
+            this.ghost.opacity = 255;
+        }, 10);
     },
 
     createBat (batType) {
         var batGroup;
         if (batType == "White") {
-            batGroup = cc.instantiate (this.bat_white);
+
+            this.bat_white.active = true;
+            var animationComp = this.bat_white.getComponent (cc.Animation);
+            animationComp.play ("Bat_Sequence");
+            setTimeout(() => {
+                this.bat_white.opacity = 255;
+            }, 10);
+
         } else if (batType == "Black") {
-            batGroup = cc.instantiate (this.bat_black);
+
+            this.bat_black.active = true;
+            var animationComp = this.bat_black.getComponent (cc.Animation);
+            animationComp.play ("Bat_Sequence");
+            setTimeout(() => {
+                this.bat_black.opacity = 255;        
+            }, 10);
         }
-        batGroup.parent =  this.canvas;
-        batGroup.setPosition (cc.v2 (0, this.leftSpawnPoint.y));
+
+
+
     },
 
     createChestWave () {
@@ -206,12 +204,12 @@ var Spawner = cc.Class({
         for (var i = 0; i < amount1; i++) {
             setTimeout(() => {
                 that.createChest (dir1);
-            }, 200*i);
+            }, this.chestSpawnInterval*i);
             
             for (var j = 0; j < amount2; j++) {
                 setTimeout(() => {
                     that.createChest (dir2);
-                }, 200 * j + this.waveSpawnInterval);
+                }, this.chestSpawnInterval * j + this.waveSpawnInterval);
             }
         }
     },

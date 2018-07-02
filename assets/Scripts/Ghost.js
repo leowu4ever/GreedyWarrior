@@ -10,7 +10,7 @@ cc.Class({
 
 
     start () {
-        this.node.setPosition (cc.v2 (0, 0));
+        this.node.active = false;
     },
 
     invertControl () {
@@ -18,6 +18,7 @@ cc.Class({
     },
 
     showAndInvert () {
+        cc.log ("showandinvert");
         var controlComp = cc.find ("Canvas").getComponent ("Control");
         var warriorComp = cc.find ("Canvas/Warrior").getComponent ("Warrior");
         // invert control - control script
@@ -31,6 +32,4 @@ cc.Class({
             warriorComp.showNormalWarrior ();
         }, this.invertTime * 1000);
     }
-
-    
 });

@@ -7,7 +7,8 @@ cc.Class({
         leftWarningPoint: cc.Node,
         rightWarningPoint: cc.Node,
         warriorLeftPoint: cc.Node,
-        warriorRightPoint: cc.Node,  
+        warriorRightPoint: cc.Node,
+        batPoint: cc.Node,
     },
     
 
@@ -59,4 +60,8 @@ cc.Class({
     getWarriorRightPoint () {
         return this.warriorRightPoint;
     }, 
+
+    getBatPoint () {
+        return this.batPoint;
+    },
 });

@@ -61,20 +61,13 @@ cc.Class({
         var recycleCallback = function () {
             //this.node.opacity = 0;
             cc.find ("Utility/Spawner").getComponent ("Spawner").recycleChest (this.node);
-            cc.log ("recycle");
-            cc.log (that.node.getPosition ());
         }
-        var moveAndShrankSpawn = cc.sequence (cc.spawn (cc.moveTo (1, scoreIconPos.x, scoreIconPos.y), cc.scaleTo (1, 0)), cc.callFunc (recycleCallback, this));
+        var moveAndShrankSpawn = cc.sequence (cc.spawn (cc.moveTo (1, scoreIconPos.x, scoreIconPos.y), cc.scaleTo (1, 0)),cc.delayTime (2), cc.callFunc (recycleCallback, this));
         this.node.runAction (moveAndShrankSpawn);  
     },
 
     stopAction () {
         this.node.stopAllActions ();
-    },
-
-    resetPosition () {
-        var anchorPointHandlerComp = cc.find ("Utility/Anchor Point Handler").getComponent ("AnchorPointHandler");
-        this.node.setPosition (anchorPointHandlerComp.getLeftChestPoint ().getPosition ());
     },
 
 });
