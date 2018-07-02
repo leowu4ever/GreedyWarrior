@@ -75,7 +75,6 @@ var Spawner = cc.Class({
     createBat (batType) {
         var batGroup;
         if (batType == "White") {
-
             this.bat_white.active = true;
             var animationComp = this.bat_white.getComponent (cc.Animation);
             animationComp.play ("Bat_Sequence");

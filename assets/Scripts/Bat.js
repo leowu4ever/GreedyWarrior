@@ -42,6 +42,8 @@ cc.Class({
         var speed = 1/this.enemyProperty.speed;
         var moveUpwards = cc.moveBy (speed, 0, cc.visibleRect.height/3);
         this.node.runAction (moveUpwards);
+        // this._weapon1.setPosition (cc.v2 (0, 25.2));
+        // this._weapon2.setPosition (cc.v2 (0, 25.2));
     },
 
     flashWarningAndFire () {
@@ -49,8 +51,7 @@ cc.Class({
 
         var leftWarriorPoint = anchorPointHandlerComp.getWarriorLeftPoint ();
         var rightWarriorPoint = anchorPointHandlerComp.getWarriorRightPoint ();
-        this._weapon1.setPosition (cc.v2 (0, 25.2));
-        this._weapon2.setPosition (cc.v2 (0, 25.2));
+
 
         var warning;
         var targetPoint;
@@ -59,40 +60,29 @@ cc.Class({
         if (this._isWarriorOnLeftSide ()) {
             warning = this._leftWarning;
             targetPoint = leftWarriorPoint;
-            this._weapon1.rotation = -45;
         } else {
             warning = this._rightWarning;
             targetPoint = rightWarriorPoint;
-            this._weapon1.rotation = 45;
         }
-
-
 
         if (this.batType == "White") {
             warning.runAction (flashWarning);
         }
 
         var targetPos = this._getTargetPos (targetPoint);
-        var fireWeapon = cc.sequence (cc.delayTime (this.warningFadeInDuration + this.warningFadeOutDuration), cc.fadeTo (0.1, 255), cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y), cc.fadeTo (0.1, 0));
-        this._weapon1.runAction (fireWeapon);
-        cc.log ("she");
+        var fireWeapon1 = cc.sequence (cc.delayTime (this.warningFadeInDuration + this.warningFadeOutDuration), cc.fadeTo (0.1, 255), cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y), cc.fadeTo (0.1, 0), cc.place (cc.v2 (0, 25.2)));
+        this._weapon1.runAction (fireWeapon1);
 
         setTimeout(() => {
-            this._weapon2.setPosition (cc.v2 (0, 25.2));
-
             if (this.batType == "Black") {
                 if (this._isWarriorOnLeftSide ()) {
                     targetPoint = leftWarriorPoint;
-                    this._weapon2.rotation = -45;
-
                 } else {
                     targetPoint = rightWarriorPoint;
-                    this._weapon2.rotation = 45;
-
                 }
                 var targetPos = this._getTargetPos (targetPoint);
-                var fireWeapon = cc.sequence (cc.fadeTo (0.1, 255), cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y));
-                this._weapon2.runAction (fireWeapon);
+                var fireWeapon2 = cc.sequence (cc.fadeTo (0.1, 255), cc.moveTo (this.weaponSpeed, targetPos.x, targetPos.y), cc.fadeTo (0.1, 0), cc.place (cc.v2 (0, 25.2)));
+                this._weapon2.runAction (fireWeapon2);
             }
         }, 2000);
 

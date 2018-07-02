@@ -1930,8 +1930,8 @@
     "_active": true,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 351,
-      "y": 806
+      "x": 375,
+      "y": -141
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -1963,8 +1963,8 @@
     "_active": true,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 478,
-      "y": 806
+      "x": 375,
+      "y": -141
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -2169,8 +2169,8 @@
     "_active": true,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 36,
-      "y": 839
+      "x": 375,
+      "y": -141
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -2202,8 +2202,8 @@
     "_active": true,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 221,
-      "y": 998
+      "x": 375,
+      "y": -141
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -2235,8 +2235,8 @@
     "_active": true,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 471,
-      "y": 1089
+      "x": 375,
+      "y": -141
     },
     "_rotationX": 0,
     "_rotationY": 0,
