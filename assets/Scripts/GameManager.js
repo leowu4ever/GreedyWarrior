@@ -28,6 +28,9 @@ cc.Class({
             if (this.getGameState ()) {
                 this.unschedule (this.createChestWave);
             }
+            this.spawner.getComponent ("Spawner").createChestWave ();
+            // this.spawner.getComponent ("Spawner").createChest (false);
+            // this.spawner.getComponent ("Spawner").createBat ("Black");
         }
         this.schedule (this.createChestWave, 5);
     },
