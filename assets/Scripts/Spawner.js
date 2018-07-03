@@ -8,9 +8,9 @@ var Spawner = cc.Class({
     properties: {
 
         chestSpawnInterval: 300, // in milisec , same side
-        waveSpawnInterval: 300, // different side
+        waveSpawnInterval: 1000, // different side
         firstLevelScore: 20,   // trigger to second level
-        secondLevelScore: 50,
+        secondLevelScore: 40,
         
         // for spawning
         _chestPool: cc.Nodepool,
@@ -40,7 +40,7 @@ var Spawner = cc.Class({
     },
 
     createChest (dir) {
-        console.clear ();
+        //console.clear ();
         cc.log ("chest size" + this._chestPool.size ());
         var chest = null;
         if (this._chestPool.size () > 0) {
@@ -94,102 +94,102 @@ var Spawner = cc.Class({
     },
 
     createChestWave () {
-        // while game is on
-        // while (this.gm.getGameState ())
-            var gmComp = cc.find ("Utility/Game Manager").getComponent ("GameManager");
-            var score = gmComp.getScore ();
-            var waveType;
+ 
+        var gmComp = cc.find ("Utility/Game Manager").getComponent ("GameManager");
+        var score = gmComp.getScore ();
+        var waveType;
+        
+        // for chest wave
+        if (score >= 0 && score < this.firstLevelScore) {
+            waveType = this.getARandomIntBetween (0, 3);
+        } else if (score >= this.firstLevelScore && score < this.secondLevelScore) {
+            waveType = this.getARandomIntBetween (4, 7);
             
-            // for chest wave
-            if (score >= 0 && score < this.firstLevelScore) {
-                waveType = this.getARandomIntBetween (0, 3);
-            } else if (score >= this.firstLevelScore && score < this.secondLevelScore) {
-                waveType = this.getARandomIntBetween (4, 7);
-            } else if (score >= this.secondLevelScore) {
-                waveType = this.getARandomIntBetween (8, 12);
-            }
+            var spawnDice = this.getARandomIntBetween (0, 1);
+            if (spawnDice > 0.5) {
+                //this.createBat ('White');
+            } 
 
-            cc.log ("case " + waveType)
-            switch (waveType) {
-                case 0:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (1, dir, 0, !dir);
-                break;
+        } else if (score >= this.secondLevelScore) {
+            waveType = this.getARandomIntBetween (8, 12);
 
-                case 1:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (2, dir, 0, !dir);
-                break;
+            var spawnDice = this.getARandomIntBetween (0, 1);
+            if (spawnDice > 0.5) {
+                var enemyDice = this.getARandomIntBetween (0, 1);
+                if (enemyDice > 0.5) {
+                    //this.createBat ('Black');    
+                } else {
+                    this.createGhost ();
+                }
+            } 
+        }
 
-                case 2:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (3, dir, 0, !dir);
-                break;
+        switch (waveType) {
+            case 0:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (1, dir, 0, !dir);
+            break;
 
-                case 3:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (4, dir, 0, !dir);
-                break;
+            case 1:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (2, dir, 0, !dir);
+            break;
 
-                case 4:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (1, dir, 1, !dir);
-                break;
+            case 2:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (3, dir, 0, !dir);
+            break;
 
-                case 5:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (1, dir, 2, !dir);
-                break;
+            case 3:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (4, dir, 0, !dir);
+            break;
 
-                case 6:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (1, dir, 3, !dir);
-                break;
+            case 4:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (1, dir, 1, !dir);
+            break;
 
-                case 7:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (1, dir, 4, !dir);
-                break;
+            case 5:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (1, dir, 2, !dir);
+            break;
 
-                case 8:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (2, dir, 2, !dir);
-                break;
+            case 6:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (1, dir, 3, !dir);
+            break;
 
-                case 9:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (2, dir, 3, !dir);
-                break;
+            case 7:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (1, dir, 4, !dir);
+            break;
 
-                case 10:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (2, dir, 4, !dir);
-                break;
+            case 8:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (2, dir, 2, !dir);
+            break;
 
-                case 11:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (3, dir, 3, !dir);
-                break;
+            case 9:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (2, dir, 3, !dir);
+            break;
 
-                case 12:
-                var dir = Math.random () >= 0.5;
-                this.createChestsOn (3, dir, 4, !dir);
-                break;
-            };
-            
-            
-            // if (waveType >= 1 && waveType <= 3) {
-            //     this.createAGhost ();
-            // }
+            case 10:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (2, dir, 4, !dir);
+            break;
 
+            case 11:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (3, dir, 3, !dir);
+            break;
 
-            // if (waveType >= 4 && waveType <= 7) {
-            //     this.createABat ('White');
-            // }
-
-            // if (waveType >= 8) {
-            //     this.createAGhost ();
-            // }
+            case 12:
+            var dir = Math.random () >= 0.5;
+            this.createChestsOn (3, dir, 4, !dir);
+            break;
+        };
     },
 
     stopChestWave () {

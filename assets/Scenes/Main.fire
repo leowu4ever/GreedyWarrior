@@ -2123,10 +2123,10 @@
       "__id__": 58
     },
     "_enabled": true,
-    "chestSpawnInterval": 300,
-    "waveSpawnInterval": 300,
-    "firstLevelScore": 30,
-    "secondLevelScore": 50,
+    "chestSpawnInterval": 200,
+    "waveSpawnInterval": 1000,
+    "firstLevelScore": 20,
+    "secondLevelScore": 40,
     "_chestPoolSize": 3,
     "ghost": {
       "__id__": 17

@@ -46,7 +46,7 @@ cc.Class({
         // also check region
         // check if it is on shield 
         // GM  
-        console.clear (); 
+        //console.clear (); 
         var curTouchPos = event.getTouches ()[0].getLocation ();
         var curTouchTime = Date.now ();
         cc.log (curTouchPos);
